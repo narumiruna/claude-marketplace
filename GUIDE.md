@@ -202,6 +202,7 @@ Each plugin entry in the `plugins` array describes a plugin and where to find it
 | :----------- | :------------- | :----------------------------------------------- |
 | `commands`   | string\|array  | Custom paths to command files or directories     |
 | `agents`     | string\|array  | Custom paths to agent files                      |
+| `skills`     | array          | Array of paths to skill directories (each should contain SKILLS.md) |
 | `hooks`      | string\|object | Custom hooks configuration or path to hooks file |
 | `mcpServers` | string\|object | MCP server configurations or path to MCP config  |
 | `lspServers` | string\|object | LSP server configurations or path to LSP config  |
@@ -271,6 +272,7 @@ This example shows a plugin entry using many of the optional fields, including c
     "./commands/experimental/preview.md"
   ],
   "agents": ["./agents/security-reviewer.md", "./agents/compliance-checker.md"],
+  "skills": ["./skills/enterprise-patterns", "./skills/compliance-guide"],
   "hooks": {
     "PostToolUse": [
       {
@@ -297,6 +299,7 @@ This example shows a plugin entry using many of the optional fields, including c
 Key things to notice:
 
 * **`commands` and `agents`**: You can specify multiple directories or individual files. Paths are relative to the plugin root.
+* **`skills`**: Array of paths to skill directories. Each directory should contain a `SKILLS.md` file with skill content.
 * **`${CLAUDE_PLUGIN_ROOT}`**: Use this variable in hooks and MCP server configs to reference files within the plugin's installation directory. This is necessary because plugins are copied to a cache location when installed.
 * **`strict: false`**: Since this is set to false, the plugin doesn't need its own `plugin.json`. The marketplace entry defines everything.
 
