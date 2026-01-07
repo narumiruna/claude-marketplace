@@ -1,0 +1,32 @@
+{
+  "name": "claude-marketplace",
+  "owner": {
+    "name": "narumi"
+  },
+  "metadata": {
+    "description": "Example marketplace for Claude Code plugin documentation",
+    "version": "1.0.0"
+  },
+  "plugins": [],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run ruff format"
+          },
+          {
+            "type": "command",
+            "command": "uv run ruff check --fix"
+          },
+          {
+            "type": "command",
+            "command": "uv run ty check"
+          }
+        ]
+      }
+    ]
+  }
+}
