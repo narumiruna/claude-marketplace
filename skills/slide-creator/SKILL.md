@@ -125,7 +125,9 @@ Write slides:
 
 ## Decision guide
 
-Pick modules based on user intent:
+See [references/decision-guide.md](references/decision-guide.md) for a flowchart and loading strategy.
+
+Quick rules:
 ```
 Slides or deck -> Marpit authoring
 Slides + colors -> Color design -> Marpit authoring
@@ -153,6 +155,12 @@ See [references/output-examples.md](references/output-examples.md) for complete 
 - Use palette hex values in SVG `fill` and `stroke`.
 - Keep border radius and stroke widths consistent between Marpit and SVG.
 - Embed SVGs with Markdown images or file references.
+
+## Troubleshooting
+
+Common cross-cutting issues:
+- [references/troubleshooting-common.md](references/troubleshooting-common.md)
+- [references/svg-illustration/troubleshooting.md](references/svg-illustration/troubleshooting.md)
 
 ## Validation
 
