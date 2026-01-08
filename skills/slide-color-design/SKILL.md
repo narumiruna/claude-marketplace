@@ -133,6 +133,56 @@ Do NOT include images unless explicitly requested.
 
 ---
 
+## Design Principles
+
+Follow these core principles when designing color systems for slides:
+
+### Visual Coherence
+- **Visually similar elements must share a coherent visual language**
+  - Use the same color family across related components
+  - Apply consistent fill logic (solid vs outlined)
+  - Follow uniform emphasis rules throughout
+
+### Hue Consistency
+- **Do not differentiate similar components by changing hue**
+  - Use brightness, saturation, or weight to express state differences
+  - Keep the same base hue for related elements
+  - Vary lightness/darkness instead of changing colors entirely
+
+### Semantic States
+- **Define clear semantic states and represent them consistently**
+  - Examples: active, inactive, completed, optional, in-progress
+  - Each state should have a distinct visual treatment
+  - Apply the same state representation across all components
+
+### Solid Over Outlined
+- **Prefer solid-filled surfaces over outlines or transparency**
+  - Use filled shapes as the default
+  - Reserve outlines only when they convey clear meaning
+  - Avoid semi-transparent overlays unless necessary
+
+### Visual Hierarchy
+- **Establish a clear visual hierarchy**
+  - Primary focus elements must stand out clearly
+  - Secondary and tertiary elements should visually recede
+  - Use size, weight, and saturation to create hierarchy
+  - Not all elements deserve equal visual weight
+
+### Single Focus Point
+- **Ensure there is a single primary visual anchor per section**
+  - Guide user attention deliberately
+  - Reduce scanning ambiguity
+  - One main focal point per slide or section
+
+### Minimize Visual Noise
+- **Avoid visual noise caused by excessive decoration**
+  - Limit unnecessary borders and strokes
+  - Don't overuse icons or graphics
+  - Avoid multiple competing emphasis cues
+  - Every visual element should serve a purpose
+
+---
+
 ## Design Constraints
 
 - Prioritize readability over aesthetics
