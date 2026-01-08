@@ -10,7 +10,7 @@ color: #fef7cd
 <!-- _backgroundColor: #0f1f2e -->
 <!-- _color: #fef7cd -->
 
-# 🔌 narumi Marketplace
+# 🔌 Narumi's Claude Marketplace
 
 **Claude Code 插件市場**
 打造現代化 Python 開發環境
