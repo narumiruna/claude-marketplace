@@ -82,8 +82,6 @@ color: #fef7cd
 
 **自動化程式碼品質檢查**
 
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap:48px; margin-top:32px;">
-
 <div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #f4e5a0;">
 
 ### 功能特色
@@ -98,7 +96,11 @@ color: #fef7cd
 
 </div>
 
-<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #f4e5a0;">
+---
+
+## 🛡️ python-code-quality
+
+<div style="margin-top:32px; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #4a7ba7;">
 
 ### 技術架構
 
@@ -111,8 +113,6 @@ color: #fef7cd
 ### 零配置啟用
 
 安裝即可使用，無需額外設定
-
-</div>
 
 </div>
 
