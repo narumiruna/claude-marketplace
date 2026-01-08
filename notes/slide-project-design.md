@@ -302,7 +302,7 @@ the first file to that location).
 1. **建立 slide-project skill**
 2. **從現有 skills 中提取規範章節** → 移到 slide-project
 3. **更新現有 skills** → 引用 slide-project 的規範
-4. **更新 marketplace.json** → 將 slide-project 加入 slides-skills plugin
+4. **更新 marketplace.json** → 將 slide-project 加入 slide-skills plugin
 5. **測試協同** → 確保三個 skills 正確協作
 6. **更新文檔** → README.md, CLAUDE.md, GUIDE.md
 
