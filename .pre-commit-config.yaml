@@ -8,3 +8,11 @@ repos:
       - id: mixed-line-ending
         args: ["--fix=lf"]
       - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: svglint
+        name: svglint
+        entry: npx svglint
+        language: system
+        args: ["-C"]
+        types: [svg]
