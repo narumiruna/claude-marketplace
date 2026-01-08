@@ -1,0 +1,422 @@
+# Marpit Authoring Best Practices
+
+Guidelines for creating professional, consistent, and effective slide presentations.
+
+---
+
+## Design Principles
+
+### Visual Consistency: The Golden Rule
+
+**CRITICAL: Consistency from beginning to end is paramount.**
+
+A presentation with inconsistent styling appears unprofessional and distracts from content. Before starting, establish a design system and apply it uniformly.
+
+---
+
+## Consistency Checklist
+
+### 1. Color Palette
+
+- ✅ Choose ONE accent color for all section dividers
+- ✅ Use the same background color throughout (or establish clear pattern)
+- ✅ Maintain consistent text colors for similar content types
+- ❌ Avoid: Different colors for each section divider (unless intentional theming)
+
+**Example (Good)**:
+```markdown
+<!-- All section dividers use same color -->
+<!-- _backgroundColor: #0891b2 -->
+# Section 1
+---
+<!-- _backgroundColor: #0891b2 -->
+# Section 2
+---
+<!-- _backgroundColor: #0891b2 -->
+# Section 3
+```
+
+**Example (Bad)**:
+```markdown
+<!-- Inconsistent colors -->
+<!-- _backgroundColor: #0891b2 -->
+# Section 1
+---
+<!-- _backgroundColor: #7c3aed -->
+# Section 2
+---
+<!-- _backgroundColor: #10b981 -->
+# Section 3
+```
+
+### 2. Spacing System
+
+- ✅ Use ONE standard gap size for all grid layouts (e.g., 48px)
+- ✅ Use ONE standard margin-top value (e.g., 32px)
+- ✅ Maintain consistent padding around content blocks
+- ❌ Avoid: Mixing 32px, 40px, 48px gaps randomly
+
+**Example (Good)**:
+```markdown
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+  <!-- Consistent 48px gap everywhere -->
+</div>
+```
+
+**Example (Bad)**:
+```markdown
+<!-- Slide 1: gap 32px, Slide 2: gap 48px, Slide 3: gap 40px -->
+```
+
+### 3. Layout Patterns
+
+- ✅ Reuse the same grid template for similar content
+- ✅ Keep two-column splits at same proportions (1fr 1fr or specific widths)
+- ✅ Use consistent border radius, stroke width across all custom elements
+- ❌ Avoid: Different layout structures for similar content types
+
+### 4. Typography
+
+- ✅ Use consistent font weights (e.g., 700 for all section titles)
+- ✅ Maintain heading hierarchy (H1 for titles, H2 for subtitles, H3 for sections)
+- ✅ Keep emoji/icon usage consistent in position and style
+- ❌ Avoid: Random font weight changes, inconsistent heading levels
+
+**Good hierarchy**:
+```markdown
+# Slide Title (H1 - once per slide)
+## Main Section (H2 - major points)
+### Subsection (H3 - details)
+```
+
+**Bad hierarchy**:
+```markdown
+# Sometimes H1
+### Sometimes H3 for title
+## Inconsistent usage
+```
+
+### 5. Directives Usage
+
+- ✅ Apply `<!-- _class: lead -->` to ALL section dividers or NONE
+- ✅ Use consistent background colors for lead slides
+- ✅ Apply pagination consistently (show on all or hide on specific slides)
+- ❌ Avoid: Some section dividers with lead class, others without
+
+---
+
+## Design System Template
+
+Before creating slides, define these constants:
+
+```markdown
+Design System:
+- Primary accent: #0891b2 (all section dividers)
+- Background: #f8fafc (all content slides)
+- Text color: #1e293b (all body text)
+- Gap size: 48px (all grid layouts)
+- Margin-top: 32px (all section spacing)
+- Border radius: 12px (all rounded elements)
+- Section divider pattern: lead class, primary accent, white text
+```
+
+Then apply consistently throughout.
+
+---
+
+## When to Break Consistency
+
+Only break consistency for intentional emphasis:
+
+**Acceptable exceptions**:
+- Final "thank you" or "contact" slide may use different color
+- Warning/alert slides may use red/orange intentionally
+- Before/after comparisons may use contrasting styles
+- Q&A slide may have unique styling
+
+**Example (Acceptable)**:
+```markdown
+<!-- Standard section divider -->
+<!-- _backgroundColor: #0891b2 -->
+# Section 1
+---
+<!-- ... content ... -->
+---
+<!-- Special warning slide -->
+<!-- _backgroundColor: #dc2626 -->
+<!-- _class: lead -->
+# ⚠️ Important Notice
+---
+<!-- Back to standard -->
+<!-- _backgroundColor: #0891b2 -->
+# Section 2
+```
+
+---
+
+## Content Best Practices
+
+### Slide Density
+
+**One idea per slide**:
+- ✅ Each slide focuses on one key message
+- ✅ Use bullet points (3-5 max per slide)
+- ❌ Avoid: Wall of text, 10+ bullets, multiple topics
+
+**Good**:
+```markdown
+## Benefits of Microservices
+
+- Independent deployment
+- Technology flexibility
+- Fault isolation
+- Scalability
+```
+
+**Bad**:
+```markdown
+## Architecture Overview
+
+Microservices are a software development technique that arranges
+an application as a collection of loosely coupled services. In a
+microservices architecture, services are fine-grained and the
+protocols are lightweight. The benefit of decomposing an application
+into different smaller services is that it improves modularity and
+makes the application easier to understand, develop, and test. It
+also parallelizes development by enabling small autonomous teams to
+develop, deploy and scale their respective services independently.
+It also allows the architecture of an individual service to emerge
+through continuous refactoring. Microservices-based architectures...
+[continues for 20 more lines]
+```
+
+### Title Guidelines
+
+**Be specific and descriptive**:
+- ✅ "Authentication Flow with OAuth 2.0"
+- ❌ "Authentication"
+- ✅ "Database Performance: Query Optimization"
+- ❌ "Performance"
+
+### Code Slides
+
+**Keep code minimal**:
+- Show only relevant portions
+- Use syntax highlighting
+- Add brief comments for clarity
+- Consider splitting complex code across multiple slides
+
+**Good**:
+````markdown
+## User Authentication
+
+```python
+def authenticate(username, password):
+    user = User.query.filter_by(username=username).first()
+    if user and user.check_password(password):
+        return generate_token(user)
+    return None
+```
+````
+
+**Bad**:
+````markdown
+## Code
+
+```python
+# [50 lines of unformatted code with no explanation]
+```
+````
+
+---
+
+## Visual Hierarchy
+
+### Importance Levels
+
+1. **Primary**: Slide title (H1 or H2)
+2. **Secondary**: Section headings (H2 or H3)
+3. **Tertiary**: Body text, lists
+4. **Quaternary**: Captions, footnotes
+
+**Use visual weight to reinforce hierarchy**:
+- Larger font size = more important
+- Bold weight = emphasis
+- Color accent = key point
+- White space = separate sections
+
+### Example Hierarchy
+
+```markdown
+# Main Topic (Primary - Largest, Bold)
+
+## Key Concept (Secondary - Medium, Bold)
+
+Important details in body text (Tertiary - Normal)
+
+- Supporting point 1
+- Supporting point 2
+
+<small style="color: #64748b;">Source: Research 2024</small> (Quaternary - Smallest, Muted)
+```
+
+---
+
+## Common Mistakes to Avoid
+
+### 1. Inconsistent Section Dividers
+
+❌ **Don't**:
+```markdown
+<!-- _class: lead -->
+# Section 1
+---
+## Section 2  <!-- Missing lead class -->
+---
+<!-- _class: lead -->
+### Section 3  <!-- Wrong heading level -->
+```
+
+✅ **Do**:
+```markdown
+<!-- _class: lead -->
+# Section 1
+---
+<!-- _class: lead -->
+# Section 2
+---
+<!-- _class: lead -->
+# Section 3
+```
+
+### 2. Random Color Changes
+
+❌ **Don't**: Change colors without reason
+
+✅ **Do**: Establish one palette and stick to it
+
+### 3. Overusing Styling
+
+❌ **Don't**:
+```markdown
+## **🎨 AMAZING** *Feature* ✨ **LAUNCH** 🚀
+
+<div style="background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet); padding: 50px; border: 10px dotted gold; box-shadow: 0 0 50px magenta; transform: rotate(5deg); animation: spin 2s infinite;">
+
+### WOW SUCH DESIGN VERY PROFESSIONAL
+
+</div>
+```
+
+✅ **Do**:
+```markdown
+## New Feature Launch
+
+Key benefits...
+```
+
+### 4. Ignoring Whitespace
+
+❌ **Don't**: Cram everything together
+
+✅ **Do**: Use generous spacing between sections
+
+---
+
+## Workflow Checklist
+
+### Before Starting
+
+- [ ] Define design system (colors, spacing, patterns)
+- [ ] Choose theme (default/gaia/uncover)
+- [ ] Decide on section divider style
+- [ ] Plan content outline
+
+### During Creation
+
+- [ ] Apply design system consistently
+- [ ] One idea per slide
+- [ ] Use proper heading hierarchy
+- [ ] Keep code examples minimal
+- [ ] Test rendering periodically
+
+### After Completion
+
+- [ ] Review all slides for consistency
+- [ ] Check color uniformity
+- [ ] Verify spacing is consistent
+- [ ] Test on projector/presentation mode
+- [ ] Proofread all text
+
+---
+
+## Performance Tips
+
+### Keep Files Manageable
+
+- Avoid embedding huge images
+- Use external image files when possible
+- Keep SVGs optimized
+- Test export time (HTML/PDF)
+
+### Rendering Optimization
+
+- Minimize complex CSS in `<style>` tags
+- Avoid excessive HTML divs
+- Use theme features when available
+- Test on target presentation device
+
+---
+
+## Accessibility
+
+### Color Contrast
+
+- Ensure text has sufficient contrast (≥ 4.5:1)
+- Test with colorblind simulators
+- Don't rely solely on color to convey meaning
+
+### Text Legibility
+
+- Use readable font sizes (H1 ≥ 48px, body ≥ 24px)
+- Avoid light gray text on white backgrounds
+- Use high-contrast for code blocks
+
+### Structure
+
+- Use semantic heading hierarchy
+- Add alt text to images
+- Keep content scannable
+
+---
+
+## Testing Your Presentation
+
+### Pre-Presentation Checklist
+
+- [ ] Render in Marp preview
+- [ ] Test on actual projector
+- [ ] Check legibility from back of room
+- [ ] Verify animations/transitions (if any)
+- [ ] Test on target device (laptop/tablet)
+- [ ] Have backup (PDF export)
+
+### Common Issues
+
+1. **Colors look different on projector**
+   - Solution: Test beforehand, avoid subtle color differences
+
+2. **Text too small**
+   - Solution: Minimum font sizes (see Accessibility above)
+
+3. **Layout breaks on different screen size**
+   - Solution: Use relative units (%, fr) instead of fixed pixels
+
+---
+
+## See Also
+
+- [syntax-guide.md](syntax-guide.md) - Marpit syntax reference
+- [patterns.md](patterns.md) - Common slide patterns
+- [themes.md](themes.md) - Theme-specific features
+- [advanced-layouts.md](advanced-layouts.md) - Complex layouts
