@@ -8,11 +8,7 @@ repos:
       - id: mixed-line-ending
         args: ["--fix=lf"]
       - id: trailing-whitespace
-  - repo: local
+  - repo: https://github.com/simple-icons/svglint
+    rev: v4.1.2
     hooks:
       - id: svglint
-        name: svglint
-        entry: npx svglint
-        language: system
-        args: ["-C"]
-        types: [svg]
