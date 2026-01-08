@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository serves two purposes:
 
-1. **Example Marketplace**: A working Claude Code plugin marketplace (`narumi-marketplace`) that demonstrates best practices
+1. **Example Marketplace**: A working Claude Code plugin marketplace (`narumi`) that demonstrates best practices
 2. **Documentation**: GUIDE.md provides comprehensive instructions for creating and distributing Claude Code plugin marketplaces
 
 ## Repository Structure
@@ -16,8 +16,11 @@ This repository serves two purposes:
 ├── .claude-plugin/
 │   └── marketplace.json       # Marketplace catalog (defines available plugins)
 ├── skills/
-│   └── python-peewee/         # Skill plugin source directories
-│       └── SKILLS.md          # Skill content in markdown format
+│   ├── python-peewee/         # Peewee ORM skill
+│   │   └── SKILL.md
+│   └── python-project/        # Python project workflow skill
+│       ├── SKILL.md
+│       └── references/
 ├── GUIDE.md                   # Complete marketplace creation guide
 ├── README.md                  # Installation and usage instructions
 ├── CLAUDE.md                  # This file
@@ -95,22 +98,26 @@ This repository contains two example plugins:
   - `uv run ty check` - Type checking
 - **Note**: Uses `strict: false` so all configuration is in marketplace.json
 
-### 2. python-peewee (skill-based)
-- **Type**: Skill plugin
-- **Source**: `./skills/python-peewee/SKILLS.md`
-- **Purpose**: Provides patterns for using Peewee ORM with DatabaseProxy
-- **Content**: Markdown-based skill with setup patterns, connection/transaction examples, and testing templates
+### 2. python-skills (multi-skill plugin)
+- **Type**: Skill plugin (contains multiple skills)
+- **Source**: `./` (root directory)
+- **Purpose**: Comprehensive Python development toolkit
+- **Skills**:
+  - `./skills/python-project` - Python 3.12+ project workflow and standards (uv, ruff, pytest, ty, typer, loguru)
+  - `./skills/python-peewee` - Peewee ORM patterns with DatabaseProxy and scoped connections/transactions
+- **Content**: Two complementary skills for Python development
 - **Note**: Uses `strict: false` so plugin.json is not required
 
 ## Adding New Plugins
 
 When adding plugins to this marketplace:
 
-1. **For skills**: Create a directory in `skills/<plugin-name>/` with `SKILLS.md`
-2. **For hooks-only**: Define inline in marketplace.json with `strict: false`
-3. **Update marketplace.json**: Add plugin entry with name, source, description, version, keywords
-4. **Update README.md**: Document the new plugin in the "Available Plugins" section
-5. **Test locally**: Use `/plugin marketplace add .` then `/plugin install <name>@narumi-marketplace`
+1. **For skills**: Create a directory in `skills/<skill-name>/` with `SKILL.md`
+2. **For multi-skill plugins**: Reference multiple skills in the `skills` array
+3. **For hooks-only**: Define inline in marketplace.json with `strict: false`
+4. **Update marketplace.json**: Add plugin entry with name, source, description, version, keywords
+5. **Update README.md**: Document the new plugin in the "Available Plugins" section
+6. **Test locally**: Use `/plugin marketplace add .` then `/plugin install <name>@narumi`
 
 ## Validating Changes
 

@@ -1,5 +1,5 @@
 {
-  "name": "narumi-marketplace",
+  "name": "narumi",
   "owner": {
     "name": "narumi"
   },
@@ -42,7 +42,20 @@
       "source": "./",
       "description": "Comprehensive Python development toolkit: project workflow and standards (uv, ruff, pytest, ty, typer, loguru) and Peewee ORM patterns with DatabaseProxy. Use for Python 3.12+ project setup, dependency management, testing, type checking, CLI development, logging, and database ORM patterns.",
       "version": "1.0.0",
-      "keywords": ["python", "uv", "ruff", "pytest", "typer", "loguru", "ty", "peewee", "orm", "database", "sql", "project-setup"],
+      "keywords": [
+        "python",
+        "uv",
+        "ruff",
+        "pytest",
+        "typer",
+        "loguru",
+        "ty",
+        "peewee",
+        "orm",
+        "database",
+        "sql",
+        "project-setup"
+      ],
       "skills": ["./skills/python-peewee", "./skills/python-project"],
       "strict": false
     }
