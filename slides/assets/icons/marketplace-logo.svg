@@ -4,20 +4,20 @@
 
   <defs>
     <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a7ba7;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#2a5f8f;stop-opacity:0.25" />
+      <stop offset="0%" style="stop-color:#fef7cd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4e5a0;stop-opacity:0.4" />
     </linearGradient>
     <filter id="shadow-sm">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
     </filter>
     <radialGradient id="star-glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#fef7cd;stop-opacity:0.6" />
+      <stop offset="0%" style="stop-color:#fef7cd;stop-opacity:0.8" />
       <stop offset="100%" style="stop-color:#f4e5a0;stop-opacity:0" />
     </radialGradient>
   </defs>
 
   <g id="bg">
-    <rect x="0" y="0" width="600" height="400" rx="20" fill="url(#bg-gradient)" stroke="#2a5f8f" stroke-width="3"/>
+    <rect x="0" y="0" width="600" height="400" rx="20" fill="url(#bg-gradient)" stroke="#d4a574" stroke-width="3"/>
   </g>
 
   <g id="main">
