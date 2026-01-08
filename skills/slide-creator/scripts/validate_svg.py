@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.12"
+# dependencies = []
+# ///
 """Validate SVG files for syntax errors and best practices."""
 
 import sys
@@ -15,16 +18,16 @@ def validate_svg(svg_path: Path) -> list[str]:
         root = tree.getroot()
 
         # Check namespace
-        if 'http://www.w3.org/2000/svg' not in root.tag:
+        if "http://www.w3.org/2000/svg" not in root.tag:
             issues.append("Missing SVG namespace (xmlns='http://www.w3.org/2000/svg')")
 
         # Check viewBox
-        if 'viewBox' not in root.attrib:
+        if "viewBox" not in root.attrib:
             issues.append("Missing viewBox attribute")
 
         # Check for oversized viewBox on potentially small content
-        if 'viewBox' in root.attrib:
-            vb = root.attrib['viewBox'].split()
+        if "viewBox" in root.attrib:
+            vb = root.attrib["viewBox"].split()
             if len(vb) == 4:
                 width, height = int(float(vb[2])), int(float(vb[3]))
                 if width == 1920 and height == 1080:
@@ -33,7 +36,7 @@ def validate_svg(svg_path: Path) -> list[str]:
                     )
 
         # Check for emoji/special characters in text (common error)
-        for text_elem in root.iter('{http://www.w3.org/2000/svg}text'):
+        for text_elem in root.iter("{http://www.w3.org/2000/svg}text"):
             if text_elem.text:
                 non_ascii = [c for c in text_elem.text if ord(c) > 127]
                 if non_ascii:
@@ -45,8 +48,8 @@ def validate_svg(svg_path: Path) -> list[str]:
         # Check stroke consistency
         stroke_widths = set()
         for elem in root.iter():
-            if 'stroke-width' in elem.attrib:
-                stroke_widths.add(elem.attrib['stroke-width'])
+            if "stroke-width" in elem.attrib:
+                stroke_widths.add(elem.attrib["stroke-width"])
 
         if len(stroke_widths) > 3:
             issues.append(
@@ -62,7 +65,7 @@ def validate_svg(svg_path: Path) -> list[str]:
     return issues
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: validate_svg.py <file.svg>")
         print("\nValidates SVG files for:")

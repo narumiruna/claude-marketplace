@@ -1,16 +1,18 @@
-#!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.12"
+# dependencies = []
+# ///
 """Initialize a new Marp presentation from template."""
 
 import sys
-import shutil
 from pathlib import Path
 from datetime import datetime
 
 # Template paths relative to script location
 TEMPLATES = {
-    'technical-dark': 'assets/templates/technical-dark.md',
-    'professional-light': 'assets/templates/professional-light.md',
-    'minimal-keynote': 'assets/templates/minimal-keynote.md'
+    "technical-dark": "assets/templates/technical-dark.md",
+    "professional-light": "assets/templates/professional-light.md",
+    "minimal-keynote": "assets/templates/minimal-keynote.md",
 }
 
 
@@ -30,10 +32,12 @@ def init_presentation(template_name: str, output_path: Path, title: str, author:
     content = template_path.read_text()
 
     # Replace placeholders
-    content = content.replace('Your Presentation Title', title)
-    content = content.replace('Your Name', author)
-    content = content.replace('Date', datetime.now().strftime('%Y-%m-%d'))
-    content = content.replace('your.email@example.com', f'{author.lower().replace(" ", ".")}@example.com')
+    content = content.replace("Your Presentation Title", title)
+    content = content.replace("Your Name", author)
+    content = content.replace("Date", datetime.now().strftime("%Y-%m-%d"))
+    content = content.replace(
+        "your.email@example.com", f"{author.lower().replace(' ', '.')}@example.com"
+    )
 
     # Write output
     output_path.write_text(content)
@@ -41,24 +45,26 @@ def init_presentation(template_name: str, output_path: Path, title: str, author:
     print(f"   Template: {template_name}")
     print(f"   Title: {title}")
     print(f"   Author: {author}")
-    print(f"\nNext steps:")
+    print("\nNext steps:")
     print(f"  1. Edit {output_path} to add your content")
-    print(f"  2. Create diagrams/ folder for SVG illustrations")
-    print(f"  3. Preview with Marp CLI or VS Code extension")
+    print("  2. Create diagrams/ folder for SVG illustrations")
+    print("  3. Preview with Marp CLI or VS Code extension")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) < 4:
         print("Usage: init_presentation.py <template> <output-file> <title> [author]")
-        print(f"\nAvailable templates:")
+        print("\nAvailable templates:")
         for name, desc in {
-            'technical-dark': 'Dark theme for code/technical content',
-            'professional-light': 'Light theme for business presentations',
-            'minimal-keynote': 'Minimal design for story-driven talks'
+            "technical-dark": "Dark theme for code/technical content",
+            "professional-light": "Light theme for business presentations",
+            "minimal-keynote": "Minimal design for story-driven talks",
         }.items():
             print(f"  {name:20} - {desc}")
         print("\nExample:")
-        print('  init_presentation.py technical-dark my-talk.md "System Architecture" "John Doe"')
+        print(
+            '  init_presentation.py technical-dark my-talk.md "System Architecture" "John Doe"'
+        )
         sys.exit(1)
 
     template = sys.argv[1]
@@ -73,7 +79,7 @@ if __name__ == '__main__':
 
     if output.exists():
         response = input(f"⚠️  {output} already exists. Overwrite? (y/N): ")
-        if response.lower() != 'y':
+        if response.lower() != "y":
             print("Cancelled.")
             sys.exit(0)
 

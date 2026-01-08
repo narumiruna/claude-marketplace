@@ -12,3 +12,13 @@ repos:
     rev: v4.1.2
     hooks:
       - id: svglint
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.11
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/narumiruna/ty-pre-commit
+    rev: v0.0.1
+    hooks:
+      - id: ty-check

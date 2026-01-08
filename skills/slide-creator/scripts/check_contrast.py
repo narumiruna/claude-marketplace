@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.12"
+# dependencies = []
+# ///
 """Check color contrast ratios for WCAG compliance."""
 
 import sys
@@ -6,14 +9,18 @@ import sys
 
 def hex_to_rgb(hex_color: str) -> tuple[int, int, int]:
     """Convert hex color to RGB tuple."""
-    hex_color = hex_color.lstrip('#')
+    hex_color = hex_color.lstrip("#")
     if len(hex_color) != 6:
         raise ValueError(f"Invalid hex color: {hex_color} (must be 6 characters)")
-    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    r = int(hex_color[0:2], 16)
+    g = int(hex_color[2:4], 16)
+    b = int(hex_color[4:6], 16)
+    return (r, g, b)
 
 
 def relative_luminance(rgb: tuple[int, int, int]) -> float:
     """Calculate relative luminance of RGB color."""
+
     def adjust(val):
         val = val / 255.0
         return val / 12.92 if val <= 0.03928 else ((val + 0.055) / 1.055) ** 2.4
@@ -36,15 +43,15 @@ def contrast_ratio(color1: str, color2: str) -> float:
 def check_wcag(ratio: float) -> dict:
     """Check WCAG compliance levels."""
     return {
-        'AA_normal': ratio >= 4.5,
-        'AA_large': ratio >= 3.0,
-        'AAA_normal': ratio >= 7.0,
-        'AAA_large': ratio >= 4.5,
-        'ratio': ratio
+        "AA_normal": ratio >= 4.5,
+        "AA_large": ratio >= 3.0,
+        "AAA_normal": ratio >= 7.0,
+        "AAA_large": ratio >= 4.5,
+        "ratio": ratio,
     }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: check_contrast.py <foreground-hex> <background-hex>")
         print("\nExample: check_contrast.py '#D4D4D4' '#1E1E1E'")
@@ -62,14 +69,24 @@ if __name__ == '__main__':
 
         print(f"\nColors: {fg} on {bg}")
         print(f"Contrast ratio: {ratio:.2f}:1\n")
-        print(f"WCAG AA (normal text):  {'✅ Pass' if wcag['AA_normal'] else '❌ Fail'} (≥4.5:1)")
-        print(f"WCAG AA (large text):   {'✅ Pass' if wcag['AA_large'] else '✅ Pass'} (≥3.0:1)")
-        print(f"WCAG AAA (normal text): {'✅ Pass' if wcag['AAA_normal'] else '❌ Fail'} (≥7.0:1)")
-        print(f"WCAG AAA (large text):  {'✅ Pass' if wcag['AAA_large'] else '❌ Fail'} (≥4.5:1)")
+        print(
+            f"WCAG AA (normal text):  {'✅ Pass' if wcag['AA_normal'] else '❌ Fail'} (≥4.5:1)"
+        )
+        print(
+            f"WCAG AA (large text):   {'✅ Pass' if wcag['AA_large'] else '✅ Pass'} (≥3.0:1)"
+        )
+        print(
+            f"WCAG AAA (normal text): {'✅ Pass' if wcag['AAA_normal'] else '❌ Fail'} (≥7.0:1)"
+        )
+        print(
+            f"WCAG AAA (large text):  {'✅ Pass' if wcag['AAA_large'] else '❌ Fail'} (≥4.5:1)"
+        )
 
         # Exit with error if doesn't meet AA normal text
-        if not wcag['AA_normal']:
-            print("\n⚠️  Warning: Does not meet minimum WCAG AA standard for normal text")
+        if not wcag["AA_normal"]:
+            print(
+                "\n⚠️  Warning: Does not meet minimum WCAG AA standard for normal text"
+            )
             sys.exit(1)
 
     except ValueError as e:

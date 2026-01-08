@@ -19,7 +19,7 @@ Create professional Marp/Marpit presentations, diagrams, and color systems with 
 
 **New presentation from template**:
 ```bash
-scripts/init_presentation.py technical-dark my-deck.md "My Presentation" "John Doe"
+uv run scripts/init_presentation.py technical-dark my-deck.md "My Presentation" "John Doe"
 ```
 
 **Available templates**:
@@ -88,7 +88,7 @@ Read in order:
 
 Validate SVGs after creation:
 ```bash
-scripts/validate_svg.py path/to/file.svg
+uv run scripts/validate_svg.py path/to/file.svg
 ```
 
 ## Workflow
@@ -192,18 +192,18 @@ SVG illustration:
 
 **Check SVG syntax and best practices**:
 ```bash
-scripts/validate_svg.py diagram.svg
+uv run scripts/validate_svg.py diagram.svg
 ```
 
 **Verify color contrast (WCAG compliance)**:
 ```bash
-scripts/check_contrast.py '#D4D4D4' '#1E1E1E'
-# Output: Contrast ratio: 8.20:1 ✅ WCAG AAA
+uv run scripts/check_contrast.py '#D4D4D4' '#1E1E1E'
+# Output: Contrast ratio: 11.25:1 ✅ WCAG AAA
 ```
 
 **Validate Marpit syntax**:
 ```bash
-scripts/validate_marpit.sh slides.md
+bash scripts/validate_marpit.sh slides.md
 ```
 
 Always validate before committing files.
