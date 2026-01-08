@@ -58,6 +58,15 @@
       ],
       "skills": ["./skills/python-peewee", "./skills/python-project"],
       "strict": false
+    },
+    {
+      "name": "slides-skills",
+      "source": "./",
+      "description": "Write presentation slides using Marpit-compatible Markdown. Includes slide structure, frontmatter, themes, directives, layout patterns, and authoring best practices.",
+      "version": "0.0.1",
+      "keywords": ["marpit", "marp", "slides", "presentation", "markdown", "frontmatter", "themes"],
+      "skills": ["./skills/marpit-markdown"],
+      "strict": false
     }
   ]
 }
