@@ -25,7 +25,7 @@
     <line x1="240" y1="200" x2="360" y2="200" stroke="#4a7ba7" stroke-width="3" opacity="0.4"/>
 
     <!-- Plugin 1 - Python (Code Quality) with star glow -->
-    <circle cx="180" cy="200" r="50" fill="url(#star-glow)"/>
+    <circle cx="180" cy="200" r="45" fill="url(#star-glow)"/>
     <circle cx="180" cy="200" r="60" fill="#f4e5a0" stroke="#d4a574" stroke-width="3" filter="url(#shadow-sm)"/>
     <path d="M 160 190 L 170 210 L 200 180" stroke="#1e3a5f" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
