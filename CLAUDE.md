@@ -120,6 +120,29 @@ After editing marketplace.json or adding plugins:
 /plugin validate .
 ```
 
+### Pre-commit Checks
+
+This repository uses pre-commit hooks to ensure code quality. You can run checks manually using:
+
+**Using prek** (recommended):
+```shell
+prek run --all-files
+```
+
+**Using pre-commit**:
+```shell
+pre-commit run --all-files
+```
+
+**Installation** (if not already installed):
+```shell
+# Install prek
+uv tool install prek
+
+# Or install pre-commit
+uv tool install pre-commit
+```
+
 After editing GUIDE.md, verify:
 - All JSON examples are syntactically valid
 - Code block attributes are consistent (```json, ```bash, ```shell with theme={null})
