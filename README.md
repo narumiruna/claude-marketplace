@@ -40,29 +40,33 @@ Comprehensive Python development toolkit combining project workflow standards an
 
 ### slide-skills
 
-Complete Marp/Marpit presentation toolkit for creating professional slides.
+Complete Marp/Marpit presentation toolkit for creating professional slides with unified workflow from color design to final slides with diagrams.
 
-**Marpit Markdown** (`marpit-markdown` skill):
-- Marpit/Marp presentation slide authoring
-- Markdown-based slide creation
+**Unified slide-creation skill** with three integrated modules:
+
+**Module 1: Color Design**
+- Design slide color systems (background, text, accents)
+- Three strategies: Dark Technical, Light Professional, Accent-Driven
+- 10 ready-to-use color palettes
+- Step-by-step workflow with validation checklist
+
+**Module 2: Marpit Authoring**
+- Write valid Marpit/Marp Markdown slides
 - Theme support (default/gaia/uncover)
-- Slide directives and frontmatter
-- Layout patterns and best practices
+- Slide patterns (title, content, two-column, code)
+- Directives, frontmatter, and best practices
+- Visual consistency guidelines
 
-**SVG Illustrator** (`slide-svg-illustrator` skill):
-- Create slide-ready SVG illustrations
+**Module 3: SVG Illustration**
+- Create slide-ready SVG diagrams and illustrations
+- Smart sizing logic for different contexts
+- Pattern examples (flowcharts, timelines, architecture)
 - Optimized for Marp HTML export
-- Smart sizing for different contexts
-- Pattern examples (flows, timelines, architecture)
-- Color palettes and design principles
+- Embedding methods and troubleshooting
 
-**Color Design** (`slide-color-design` skill):
-- Consistent color systems for presentations
-- Professional color schemes
-- Design principles and guidelines
-- Visual harmony and contrast
+**Architecture**: Progressive disclosure design - loads only needed modules/references based on task complexity.
 
-**Type**: Skill plugin (provides Claude with presentation design expertise)
+**Type**: Skill plugin (provides Claude with end-to-end presentation creation expertise)
 
 ## Installation
 

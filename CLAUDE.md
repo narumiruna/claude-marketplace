@@ -16,20 +16,17 @@ This repository serves two purposes:
 ├── .claude-plugin/
 │   └── marketplace.json       # Marketplace catalog (defines available plugins)
 ├── skills/
-│   ├── marpit-markdown/       # Marpit/Marp slide authoring skill
-│   │   ├── SKILL.md
-│   │   └── references/
 │   ├── python-peewee/         # Peewee ORM skill
 │   │   └── SKILL.md
 │   ├── python-project/        # Python project workflow skill
 │   │   ├── SKILL.md
 │   │   └── references/
-│   ├── slide-color-design/    # Slide color design skill
-│   │   ├── SKILL.md
-│   │   └── references/
-│   └── slide-svg-illustrator/ # SVG illustration skill
+│   └── slide-creation/        # Unified slide creation skill
 │       ├── SKILL.md
 │       └── references/
+│           ├── color-design/       # Color system design
+│           ├── marpit-authoring/   # Marpit Markdown slides
+│           └── svg-illustration/   # SVG diagrams
 ├── GUIDE.md                   # Complete marketplace creation guide
 ├── README.md                  # Installation and usage instructions
 ├── CLAUDE.md                  # This file
@@ -129,43 +126,58 @@ Skills: `./skills/python-peewee`, `./skills/python-project`
 - Testing patterns with SQLite
 - ORM best practices
 
-### 3. slide-skills (multi-skill, v0.0.3)
+### 3. slide-skills (unified skill, v0.0.4)
 
 Location: `./` (root)
-Skills: `./skills/marpit-markdown`, `./skills/slide-svg-illustrator`, `./skills/slide-color-design`
+Skills: `./skills/slide-creation` (unified skill with modular references)
 
-**marpit-markdown skill**:
-- Marpit/Marp presentation slide authoring
-- Output-only skill: generates complete slide files
-- Supports default/gaia/uncover themes
-- Comprehensive references:
-  - Slide patterns (title, content, two-column, etc.)
-  - Themes and directives
-  - Advanced layouts and best practices
-- Mandatory frontmatter with theme specification
+**Architecture**: Progressive disclosure design with a lean SKILL.md (~250 lines) that loads references on-demand.
 
-**slide-svg-illustrator skill**:
-- SVG illustration authoring optimized for Marp HTML export
-- Smart sizing logic based on slide context
-- Multiple embedding methods:
-  - Centered illustrations
-  - Two-column layouts
-  - Full-background graphics
-- Comprehensive references:
-  - Pattern examples (process flows, timelines, architecture, comparisons)
-  - Color palettes (8 curated schemes)
-  - Troubleshooting common SVG issues
-- Theme-aware adjustments for default/gaia/uncover
-- HTML-first approach for GitHub Actions workflow
+**slide-creation skill**:
+- Unified presentation creation workflow: color design → slides → diagrams
+- Three integrated modules accessible via single entry point
+- Shared design principles ensure visual consistency across all outputs
 
-**slide-color-design skill**:
-- Consistent color system design for presentations
-- Professional color scheme selection
-- Design principles and guidelines
-- Visual harmony and contrast management
-- References for color theory and application
+**Module 1: Color Design** (`references/color-design/`):
+- 5-step workflow for designing slide color systems
+- Three strategies: Dark Technical, Light Professional, Accent-Driven
+- 10 ready-to-use palettes with contrast validation
+- Output templates and examples
+- References:
+  - `workflow.md` - Complete color design process
+  - `strategies.md` - Strategy selection guide
+  - `palettes.md` - 10 tested color palettes
+  - `output-template.md` - Example outputs
 
-All three skills work together to provide a complete presentation creation toolkit.
+**Module 2: Marpit Authoring** (`references/marpit-authoring/`):
+- Valid Marpit/Marp Markdown slide creation
+- Theme support (default/gaia/uncover)
+- Slide patterns, directives, frontmatter
+- Visual consistency and best practices
+- References:
+  - `syntax-guide.md` - Marpit syntax fundamentals
+  - `patterns.md` - Common slide patterns
+  - `themes.md` - Theme-specific features
+  - `best-practices.md` - Consistency guidelines
+  - `advanced-layouts.md` - Complex layouts
+
+**Module 3: SVG Illustration** (`references/svg-illustration/`):
+- Create slide-ready SVG diagrams and illustrations
+- Smart sizing logic for different contexts
+- Optimized for Marp HTML export
+- Pattern examples and troubleshooting
+- References:
+  - `core-rules.md` - SVG basics and sizing
+  - `embedding.md` - Embedding methods
+  - `pattern-examples.md` - Flowcharts, timelines, architecture
+  - `color-palettes.md` - SVG-specific colors
+  - `troubleshooting.md` - Common issues
+
+**Benefits of unified architecture**:
+- Progressive disclosure: Load only needed modules (saves ~30% context for complex tasks)
+- Unified design principles: Visual consistency written once, applied everywhere
+- Clear workflow: Guided sequence from color → slides → diagrams
+- Modular yet cohesive: Each module can be used independently or together
 
 ## Adding New Plugins
 
