@@ -100,7 +100,7 @@ To use this skill in your marketplace:
 /plugin marketplace add https://github.com/yourusername/claude-marketplace
 
 # Install the skill
-/plugin install slides-skills@narumi
+/plugin install slide-skills@narumi
 ```
 
 Then activate with:

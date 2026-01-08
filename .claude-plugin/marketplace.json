@@ -60,7 +60,7 @@
       "strict": false
     },
     {
-      "name": "slides-skills",
+      "name": "slide-skills",
       "source": "./",
       "description": "Complete Marp/Marpit presentation toolkit: write slides with Marpit-compatible Markdown and create slide-ready SVG illustrations optimized for HTML export. Includes slide structure, frontmatter, themes, directives, layout patterns, SVG authoring with smart sizing, and embedding best practices.",
       "version": "0.0.3",
