@@ -228,20 +228,30 @@ table td {
 
 ---
 
-## 📚 實作範例
+## 📚 實作範例：Hooks 插件
 
-這個 marketplace 展示：
+**python-code-quality 展示 PreToolUse hooks**
 
-**Hooks 插件**
-- `python-code-quality` 展示 PreToolUse hooks
 - 自動攔截檔案操作並執行工具
+- 在 Edit/Write 前觸發品質檢查
+- 展示如何實作自動化工作流程
 
-**Multi-skill 插件**
-- `python-skills` 整合多個相關技能
+---
+
+## 📚 實作範例：Multi-skill 插件
+
+**整合多個相關技能**
+
+- `python-skills` 整合專案工作流程 + Peewee ORM
 - `slide-skills` 漸進式模組載入
 - 使用 `strict: false` 進行內聯插件定義
 
-**目錄組織**
+---
+
+## 📚 實作範例：目錄組織
+
+**標準化的市場結構**
+
 - 插件在 `plugins/` 目錄
 - 共享技能在 `skills/` 目錄
 - 每個插件獨立配置
