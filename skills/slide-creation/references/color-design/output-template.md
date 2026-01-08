@@ -274,4 +274,4 @@ from reduced eye strain, and colored elements pop against dark backgrounds.
 
 - [workflow.md](workflow.md) - Complete design process
 - [strategies.md](strategies.md) - Strategy details
-- [palettes.md](palettes.md) - Ready-to-use examples
+- [../color-palettes.md](../color-palettes.md) - Comprehensive color reference

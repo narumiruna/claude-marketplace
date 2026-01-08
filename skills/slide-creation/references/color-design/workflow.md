@@ -89,7 +89,7 @@ For each role, provide:
 **Guidelines**:
 - Avoid overly saturated colors unless explicitly requested
 - Ensure text colors have sufficient contrast with backgrounds
-- Use established palettes from [palettes.md](palettes.md) when appropriate
+- Use established palettes from [../color-palettes.md](../color-palettes.md) when appropriate
 - Dark backgrounds: #1E1E1E to #2D2D2D (not pure black #000000)
 - Light backgrounds: #FAFAFA to #FFFFFF (not pure white for readability)
 
@@ -184,5 +184,5 @@ If brand colors exist, adapt them into the system rather than replacing them.
 ## See Also
 
 - [strategies.md](strategies.md) - Detailed strategy explanations
-- [palettes.md](palettes.md) - 10 ready-to-use palettes
+- [../color-palettes.md](../color-palettes.md) - Comprehensive color reference
 - [output-template.md](output-template.md) - Complete output example

@@ -47,7 +47,7 @@ Dark backgrounds with muted accents, optimized for code and technical diagrams.
 
 ### Example Palette
 
-See [palettes.md](palettes.md) for:
+See [../color-palettes.md](../color-palettes.md) for:
 - Palette 1: Code-Focused Blue
 - Palette 2: Terminal Dark
 - Palette 3: Midnight Professional
@@ -104,7 +104,7 @@ Light backgrounds with restrained colors, optimized for business and formal sett
 
 ### Example Palette
 
-See [palettes.md](palettes.md) for:
+See [../color-palettes.md](../color-palettes.md) for:
 - Palette 4: Clean Corporate
 - Palette 5: Modern Minimal
 - Palette 6: Warm Professional
@@ -161,7 +161,7 @@ Neutral base (white/light gray) with one strong highlight color for emphasis.
 
 ### Example Palette
 
-See [palettes.md](palettes.md) for:
+See [../color-palettes.md](../color-palettes.md) for:
 - Palette 7: Minimal with Teal Focus
 - Palette 8: Gray Scale with Red Accent
 
@@ -208,5 +208,5 @@ In rare cases, you may combine strategies:
 ## See Also
 
 - [workflow.md](workflow.md) - Complete color design process
-- [palettes.md](palettes.md) - Ready-to-use palettes for each strategy
+- [../color-palettes.md](../color-palettes.md) - Ready-to-use palettes for each strategy
 - [output-template.md](output-template.md) - Example outputs

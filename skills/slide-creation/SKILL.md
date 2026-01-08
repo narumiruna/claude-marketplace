@@ -77,7 +77,7 @@ A presentation with inconsistent styling appears unprofessional and distracts fr
 
 **Key references**:
 - `references/color-design/workflow.md` - Step-by-step color design process
-- `references/color-design/palettes.md` - 10 ready-to-use palettes
+- `references/color-palettes.md` - Ready-to-use color palettes
 - `references/color-design/strategies.md` - Dark Technical / Light Professional / Accent-Driven
 
 ---
@@ -132,19 +132,19 @@ A presentation with inconsistent styling appears unprofessional and distracts fr
 
 1. Read `references/svg-illustration/core-rules.md` for sizing and structure
 2. If needs specific pattern: Read `references/svg-illustration/pattern-examples.md`
-3. For colors: Reference `references/color-design/palettes.md` (use an existing palette)
+3. For colors: Reference `references/color-palettes.md` (use an existing palette)
 
 #### Task: "Design slide colors"
 
 1. Read `references/color-design/workflow.md` (5-step process)
 2. Follow strategy selection (Dark Technical / Light Professional / Accent-Driven)
-3. Reference `references/color-design/palettes.md` for examples
+3. Reference `references/color-palettes.md` for examples
 
 #### Task: "Write slides"
 
 1. Read `references/marpit-authoring/syntax-guide.md` for Marpit basics
 2. For specific layouts: Read `references/marpit-authoring/slide-patterns.md`
-3. For colors: Use an established palette or reference `references/color-design/palettes.md`
+3. For colors: Use an established palette or reference `references/color-palettes.md`
 
 ---
 
@@ -311,7 +311,7 @@ Or save as separate file and reference.
 
 ### Pattern 3: Quick Diagram Only
 
-1. Skip color design (use default palette from `references/color-design/palettes.md`)
+1. Skip color design (use default palette from `references/color-palettes.md`)
 2. Skip Marpit (no slides needed)
 3. SVG: Create diagram with selected palette
 
@@ -321,10 +321,11 @@ Or save as separate file and reference.
 
 ```
 references/
+├── color-palettes.md        - Comprehensive color reference (complete systems + SVG quick reference)
+│
 ├── color-design/
 │   ├── workflow.md          - 5-step color design process
 │   ├── strategies.md        - Three strategy types explained
-│   ├── palettes.md          - 10 ready-to-use color palettes
 │   └── output-template.md   - Complete output example
 │
 ├── marpit-authoring/
@@ -336,7 +337,6 @@ references/
 └── svg-illustration/
     ├── core-rules.md        - SVG basics, sizing, embedding
     ├── pattern-examples.md  - Flowcharts, timelines, architecture
-    ├── color-palettes.md    - SVG-specific color examples
     └── troubleshooting.md   - Common SVG issues and fixes
 ```
 
