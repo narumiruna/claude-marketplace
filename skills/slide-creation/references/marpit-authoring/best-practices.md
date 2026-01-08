@@ -19,11 +19,42 @@ A presentation with inconsistent styling appears unprofessional and distracts fr
 ### 1. Color Palette
 
 - ✅ Choose ONE accent color for all section dividers
-- ✅ Use the same background color throughout (or establish clear pattern)
+- ✅ Use background shades with intentional hierarchy (see below)
 - ✅ Maintain consistent text colors for similar content types
 - ❌ Avoid: Different colors for each section divider (unless intentional theming)
 
-**Example (Good)**:
+**Background Color Hierarchy (Recommended Pattern)**
+
+Use different background shades to create visual hierarchy:
+
+- **Lead slides (section dividers)**: Darkest shade — signals transitions, demands attention
+- **Content slides**: Medium shade — easier on eyes for main content
+- **Special emphasis**: Lightest or accent shade — reserve for critical messages
+
+**Example (Good - with hierarchy)**:
+```markdown
+---
+marp: true
+backgroundColor: #1e3a5f  <!-- Medium shade for content -->
+---
+
+<!-- _class: lead -->
+<!-- _backgroundColor: #0f1f2e -->  <!-- Darkest for lead -->
+# Section 1
+
+---
+
+## Content Slide
+Regular content on medium background...
+
+---
+
+<!-- _class: lead -->
+<!-- _backgroundColor: #0f1f2e -->  <!-- Darkest for lead -->
+# Section 2
+```
+
+**Example (Also Good - single color)**:
 ```markdown
 <!-- All section dividers use same color -->
 <!-- _backgroundColor: #0891b2 -->
@@ -38,7 +69,7 @@ A presentation with inconsistent styling appears unprofessional and distracts fr
 
 **Example (Bad)**:
 ```markdown
-<!-- Inconsistent colors -->
+<!-- Inconsistent colors with no pattern -->
 <!-- _backgroundColor: #0891b2 -->
 # Section 1
 ---

@@ -111,10 +111,36 @@ Explain how to apply the colors to:
 
 **Focus on consistency, not decoration.**
 
-**Example**:
+**Creating Visual Hierarchy with Color Depth**
+
+Use different background shades to establish slide hierarchy:
+
+1. **Lead/Title slides (highest impact)** - Use the **darkest** background shade
+   - Creates strong opening/transition moments
+   - Demands attention and signals section changes
+   - Example: `#0f1f2e` (darkest) for Dark Technical strategy
+
+2. **Content slides (main body)** - Use **medium** background shade
+   - Balances readability with visual interest
+   - Easier on the eyes for prolonged viewing
+   - Example: `#1e3a5f` (medium) for Dark Technical strategy
+
+3. **Special emphasis slides** - Use **lightest** or accent backgrounds sparingly
+   - Reserve for critical messages or calls-to-action
+   - Example: `#2a5f8f` (lighter) for highlighted content
+
+**Why this works:**
+- Creates natural "rhythm" in presentation flow
+- Deepest backgrounds signal "pause and listen"
+- Medium backgrounds allow focus on content
+- Consistent application reinforces structure
+
+**Example application**:
 ```
-* Titles: Primary (#569CD6) on Background, bold weight
-* Body text: Text Primary (#D4D4D4) on Background or Surface
+* Lead slides: Background = Darkest shade (#0f1f2e)
+* Content slides: Background = Medium shade (#1e3a5f)
+* Titles: Primary (#569CD6) on respective backgrounds
+* Body text: Text Primary (#D4D4D4) with high contrast
 * Code blocks: Surface background with syntax highlighting
 * Diagrams: Surface for boxes, Primary for arrows
 ```

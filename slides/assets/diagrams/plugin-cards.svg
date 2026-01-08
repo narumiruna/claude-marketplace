@@ -1,62 +1,82 @@
 <svg viewBox="0 0 1440 300" width="1440" height="300" xmlns="http://www.w3.org/2000/svg">
-  <title>Plugin Cards</title>
+  <title>Plugin Cards - Van Gogh Starry Night Theme</title>
   <desc>Two plugin cards showing python-code-quality and python-skills</desc>
 
   <defs>
     <filter id="shadow-sm">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.12"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
     </filter>
+
+    <!-- Starry night gradient for cards -->
     <linearGradient id="card-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#F6F8FB;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#e3eaf2;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#0f1f2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a5f8f;stop-opacity:0.8" />
     </linearGradient>
+
+    <!-- Glow effect for stars -->
+    <radialGradient id="star-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fef7cd;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#f4e5a0;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#f4e5a0;stop-opacity:0" />
+    </radialGradient>
   </defs>
 
   <g id="main">
     <!-- Python Code Quality Card -->
-    <rect x="24" y="24" width="680" height="252" rx="16" fill="url(#card-bg)" filter="url(#shadow-sm)"/>
+    <rect x="24" y="24" width="680" height="252" rx="16" fill="url(#card-bg)" stroke="#4a7ba7" stroke-width="3" filter="url(#shadow-sm)"/>
 
-    <!-- Icon - More saturated to emphasize -->
-    <circle cx="100" cy="130" r="35" fill="#2a5f8f"/>
-    <path d="M 88 123 L 95 138 L 112 113" stroke="#fef7cd" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Icon - Shield with checkmark -->
+    <circle cx="100" cy="130" r="38" fill="#2a5f8f" stroke="#f4e5a0" stroke-width="3"/>
+    <path d="M 86 123 L 94 140 L 114 110" stroke="#fef7cd" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
     <!-- Title -->
-    <text x="364" y="90" text-anchor="middle" font-size="38" font-weight="700" fill="#1e3a5f" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <text x="364" y="90" text-anchor="middle" font-size="38" font-weight="700" fill="#fef7cd" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
       python-code-quality
     </text>
 
     <!-- Description -->
-    <text x="364" y="145" text-anchor="middle" font-size="30" fill="#475569" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <text x="364" y="145" text-anchor="middle" font-size="30" fill="#f4e5a0" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
       ruff + ty 自動檢查
     </text>
 
-    <!-- Badge - Solid fill instead of transparency -->
-    <rect x="270" y="180" width="188" height="40" rx="20" fill="#cbd5e1"/>
-    <text x="364" y="207" text-anchor="middle" font-size="24" font-weight="600" fill="#1e3a5f" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <!-- Badge -->
+    <rect x="270" y="180" width="188" height="40" rx="20" fill="#4a7ba7" stroke="#f4e5a0" stroke-width="2"/>
+    <text x="364" y="207" text-anchor="middle" font-size="24" font-weight="600" fill="#fef7cd" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
       程式碼品質
     </text>
 
     <!-- Python Skills Card -->
-    <rect x="736" y="24" width="680" height="252" rx="16" fill="url(#card-bg)" filter="url(#shadow-sm)"/>
+    <rect x="736" y="24" width="680" height="252" rx="16" fill="url(#card-bg)" stroke="#4a7ba7" stroke-width="3" filter="url(#shadow-sm)"/>
 
-    <!-- Icon - Same base color, less saturated to differentiate -->
-    <circle cx="812" cy="130" r="35" fill="#4a7ba7"/>
-    <rect x="797" y="115" width="30" height="30" rx="4" fill="#fef7cd"/>
+    <!-- Icon - Book/Document -->
+    <circle cx="812" cy="130" r="38" fill="#4a7ba7" stroke="#f4e5a0" stroke-width="3"/>
+    <rect x="794" y="114" width="36" height="32" rx="4" fill="#fef7cd"/>
+    <rect x="800" y="120" width="24" height="3" rx="1.5" fill="#2a5f8f"/>
+    <rect x="800" y="128" width="24" height="3" rx="1.5" fill="#2a5f8f"/>
+    <rect x="800" y="136" width="16" height="3" rx="1.5" fill="#2a5f8f"/>
 
     <!-- Title -->
-    <text x="1076" y="90" text-anchor="middle" font-size="38" font-weight="700" fill="#1e3a5f" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <text x="1076" y="90" text-anchor="middle" font-size="38" font-weight="700" fill="#fef7cd" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
       python-skills
     </text>
 
     <!-- Description -->
-    <text x="1076" y="145" text-anchor="middle" font-size="30" fill="#475569" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <text x="1076" y="145" text-anchor="middle" font-size="30" fill="#f4e5a0" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
       專案工作流 + ORM
     </text>
 
-    <!-- Badge - Solid fill instead of transparency -->
-    <rect x="1000" y="180" width="152" height="40" rx="20" fill="#cbd5e1"/>
-    <text x="1076" y="207" text-anchor="middle" font-size="24" font-weight="600" fill="#1e3a5f" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <!-- Badge -->
+    <rect x="1000" y="180" width="152" height="40" rx="20" fill="#4a7ba7" stroke="#f4e5a0" stroke-width="2"/>
+    <text x="1076" y="207" text-anchor="middle" font-size="24" font-weight="600" fill="#fef7cd" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
       開發標準
     </text>
+
+    <!-- Decorative stars -->
+    <circle cx="680" cy="60" r="12" fill="url(#star-glow)"/>
+    <circle cx="680" cy="60" r="4" fill="#fef7cd"/>
+
+    <circle cx="1390" cy="240" r="10" fill="url(#star-glow)"/>
+    <circle cx="1390" cy="240" r="3" fill="#fef7cd"/>
   </g>
 </svg>

@@ -2,13 +2,13 @@
 marp: true
 theme: default
 paginate: true
-backgroundColor: #F6F8FB
-color: #0F1F2E
+backgroundColor: #1e3a5f
+color: #fef7cd
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #2a5f8f -->
-<!-- _color: #ffffff -->
+<!-- _backgroundColor: #0f1f2e -->
+<!-- _color: #fef7cd -->
 
 # 🔌 narumi Marketplace
 
@@ -31,7 +31,7 @@ color: #0F1F2E
 
 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:48px; margin-top:32px;">
 
-<div style="text-align:center;">
+<div style="text-align:center; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #4a7ba7;">
 
 ### ⚡ 自動化
 
@@ -40,7 +40,7 @@ color: #0F1F2E
 
 </div>
 
-<div style="text-align:center;">
+<div style="text-align:center; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #4a7ba7;">
 
 ### 📚 標準化
 
@@ -49,7 +49,7 @@ color: #0F1F2E
 
 </div>
 
-<div style="text-align:center;">
+<div style="text-align:center; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #4a7ba7;">
 
 ### 🔧 可擴展
 
@@ -63,8 +63,8 @@ color: #0F1F2E
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #2a5f8f -->
-<!-- _color: #ffffff -->
+<!-- _backgroundColor: #0f1f2e -->
+<!-- _color: #fef7cd -->
 
 # 兩大核心插件
 
@@ -84,7 +84,7 @@ color: #0F1F2E
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:48px; margin-top:32px;">
 
-<div>
+<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #f4e5a0;">
 
 ### 功能特色
 
@@ -98,7 +98,7 @@ color: #0F1F2E
 
 </div>
 
-<div>
+<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #f4e5a0;">
 
 ### 技術架構
 
@@ -124,7 +124,7 @@ color: #0F1F2E
 
 ### 包含兩大技能模組
 
-<div style="margin-top:32px;">
+<div style="margin-top:32px; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #4a7ba7;">
 
 **1. Python Project Workflow** (`python-project`)
 - 現代工具鏈: uv, ruff, pytest, ty
@@ -141,8 +141,8 @@ color: #0F1F2E
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #2a5f8f -->
-<!-- _color: #ffffff -->
+<!-- _backgroundColor: #0f1f2e -->
+<!-- _color: #fef7cd -->
 
 # 快速開始
 
@@ -192,7 +192,7 @@ color: #0F1F2E
 
 插件安裝後自動啟用
 
-<div style="margin-top:32px;">
+<div style="margin-top:32px; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #f4e5a0;">
 
 ### 🎯 立即體驗
 
@@ -209,8 +209,8 @@ Claude 自動獲得 Python 開發最佳實踐知識
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #2a5f8f -->
-<!-- _color: #ffffff -->
+<!-- _backgroundColor: #0f1f2e -->
+<!-- _color: #fef7cd -->
 
 # 進階功能
 
@@ -245,7 +245,7 @@ Claude 自動獲得 Python 開發最佳實踐知識
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:48px; margin-top:32px;">
 
-<div>
+<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #d4a574;">
 
 ### 建立自己的插件
 
@@ -255,7 +255,7 @@ Claude 自動獲得 Python 開發最佳實踐知識
 
 </div>
 
-<div>
+<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #d4a574;">
 
 ### Multi-skill 插件
 
@@ -285,11 +285,15 @@ marketplace/
     └── python-peewee/
 ```
 
+<div style="margin-top:32px; background: #0f1f2e; padding: 24px; border-radius: 12px; border-left: 6px solid #4a7ba7;">
+
 **關鍵原則**
 
 - 插件定義於 `plugins/` 目錄
 - 共享技能於 `skills/` 目錄
 - 每個插件獨立配置
+
+</div>
 
 ---
 
@@ -297,11 +301,17 @@ marketplace/
 
 <div style="margin-top:32px;">
 
+<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #f4e5a0; margin-bottom: 32px;">
+
 ### 核心文檔
 
 - **[GUIDE.md](GUIDE.md)** - 建立市場完整指南
 - **[CLAUDE.md](CLAUDE.md)** - 開發者指南
 - **[README.md](README.md)** - 快速入門
+
+</div>
+
+<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #4a7ba7;">
 
 ### 範例展示
 
@@ -311,11 +321,13 @@ marketplace/
 
 </div>
 
+</div>
+
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #2a5f8f -->
-<!-- _color: #ffffff -->
+<!-- _backgroundColor: #0f1f2e -->
+<!-- _color: #fef7cd -->
 
 # 開始使用
 
