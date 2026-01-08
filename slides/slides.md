@@ -69,15 +69,20 @@ table td {
 
 **自動化程式碼品質檢查**
 
-<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border-left: 6px solid #f4e5a0;">
-
 ### 功能特色
 
 - **ruff format** - 自動格式化
 - **ruff check --fix** - 智慧修復
 - **ty check** - 型別檢查
 
-### 執行時機a1520 -->
+### 執行時機
+
+在 Edit/Write 操作前自動執行
+
+---
+
+<!-- _class: lead -->
+<!-- _backgroundColor: #0a1520 -->
 
 # 兩大核心插件
 
@@ -128,7 +133,8 @@ table td {
 **完整 Python 開發技能包**
 
 ### 包含兩大技能模組
-a1520Workflow** (`python-project`)
+
+**1. Modern Python Workflow** (`python-project`)
 - 現代工具鏈: uv, ruff, pytest, ty
 - CLI 開發: typer
 - 日誌系統: loguru
@@ -137,6 +143,13 @@ a1520Workflow** (`python-project`)
 - DatabaseProxy 設定模式
 - 連線管理與交易處理
 - SQLite 測試範例
+
+---
+
+## 🚀 快速開始
+
+### 步驟 1: 加入市場
+
 本地測試：
 
 ```bash
@@ -165,7 +178,6 @@ a1520Workflow** (`python-project`)
 
 插件安裝後自動啟用
 
-<div style="margin-top:32px; background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #f4e5a0;">
 ### 🎯 立即體驗
 
 - 編輯 Python 檔案 → 自動格式化 ✓
@@ -175,15 +187,16 @@ a1520Workflow** (`python-project`)
 ### 📖 獲取幫助
 
 Claude 自動獲得 Python 開發最佳實踐知識
+
 ---
 
 <!-- _class: lead -->
-<!-- _backgroundColor: #0f1f2e -->
-<!-- _color: #fef7cd -->
+<!-- _backgroundColor: #0a1520 -->
 
 # 進階功能
 
-**測試與自訂**a1520
+**測試與自訂**
+
 ---
 
 ## 🧪 測試與驗證
@@ -258,30 +271,6 @@ marketplace/
 
 ## 📚 文檔資源
 
-<div style="margin-top:32px;">
-
-<div style="background: #0f1f2e; padding: 32px; border-radius: 16px; border: 3px solid #f4e5a0; margin-bottom: 32px;">
-
-### 核心文檔
-
-- **[GUIDE.md](GUIDE.md)** - 建立市場完整指南
-- **[CLAUDE.md](CLAUDE.md)** - 開發者指南
-- **[README.md](README.md)** - 快速入門
-
-**關鍵原則**
-
-- 插件定義於 `plugins/` 目錄
-- 共享技能於 `skills/` 目錄
-- 每個插件獨立配置etplace 驗證流程
-
-</div>
-
-</div>
-
----
-
-<!-- _class: lead -->
-<!-- _backgroundColor: #0f1f2e -->
 ### 核心文檔
 
 - **[GUIDE.md](GUIDE.md)** - 建立市場完整指南
@@ -293,3 +282,14 @@ marketplace/
 - Hooks 插件實作
 - 多技能插件組織
 - Marketplace 驗證流程
+
+---
+
+<!-- _class: lead -->
+<!-- _backgroundColor: #0a1520 -->
+
+# 謝謝
+
+**開始打造你的 Claude 插件市場**
+
+🔗 github.com/narumiruna/claude-marketplace
