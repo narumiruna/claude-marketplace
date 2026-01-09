@@ -3,6 +3,7 @@ name: marp-to-pages
 concurrency: marp-to-pages
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
