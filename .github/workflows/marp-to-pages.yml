@@ -25,17 +25,14 @@ jobs:
       - name: Ensure build dir exists
         run: mkdir -p build
 
-      - name: Copy images directory (if exists)
-        run: if [[ -d img ]]; then cp -R img build/img; fi
-
       - name: Copy slide assets (non-Markdown)
         run: |
-          cp -rf examples/slides/ build/docs/
+          cp -rf examples/slides/ build/
 
       - name: Marp Build
         uses: docker://marpteam/marp-cli:latest
         with:
-          args: -I examples/slides -o build/docs/
+          args: -I examples/slides -o build/
         env:
           MARP_USER: root:root
 

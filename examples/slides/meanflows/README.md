@@ -1,1 +1,1 @@
-[GitHub Pages](https://narumiruna.github.io/claude-marketplace/docs/meanflows/slides.html)
+[GitHub Pages](https://narumiruna.github.io/claude-marketplace/meanflows/slides.html)
