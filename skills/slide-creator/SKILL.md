@@ -22,10 +22,13 @@ Create professional Marp/Marpit presentations, diagrams, and color systems with 
 uv run scripts/init_presentation.py technical-dark my-deck.md "My Presentation" "John Doe"
 ```
 
-**Generate color palette from brand**:
+**Browse and generate color palettes**:
 ```bash
-uv run scripts/generate_palette.py brand "#FF6B35" light    # Light theme
-uv run scripts/generate_palette.py preset code-blue        # Use preset
+uv run scripts/generate_palette.py list                    # List all slide palettes
+uv run scripts/generate_palette.py show code-blue          # Show palette details
+uv run scripts/generate_palette.py brand "#FF6B35" light   # Generate from brand color
+uv run scripts/generate_palette.py svg-list                # List SVG quick palettes
+uv run scripts/generate_palette.py svg-show default        # Show SVG palette details
 ```
 
 **Available templates**:
@@ -52,10 +55,16 @@ Design slide color systems (background, text, accents, semantic colors).
 
 Output: color palette specification with hex codes and usage guidelines.
 
+Browse available palettes:
+```bash
+uv run scripts/generate_palette.py list       # All slide palettes
+uv run scripts/generate_palette.py svg-list   # SVG quick palettes
+```
+
 Read in order:
 - `references/color-design/workflow.md`
 - `references/color-design/strategies.md`
-- `references/color-palettes.md` (use as a base or cross-check)
+- `references/color-palettes.md` (index of palettes; use script to view details)
 - `references/color-design/output-template.md` (match the format)
 
 ### Module 2: Marpit authoring
@@ -104,12 +113,13 @@ uv run scripts/validate_svg.py path/to/file.svg
 Draw a diagram:
 1. Read `references/svg-illustration/core-rules.md`.
 2. Use `references/svg-illustration/pattern-examples.md` for layouts.
-3. Reuse a palette from `references/color-palettes.md`.
+3. Choose colors: `uv run scripts/generate_palette.py svg-show default`
 
 Design slide colors:
-1. Generate from brand: `uv run scripts/generate_palette.py brand "#BRAND" light`
-2. Or follow `references/color-design/workflow.md`.
-3. Or select preset from `references/color-palettes.md`.
+1. Browse palettes: `uv run scripts/generate_palette.py list`
+2. View details: `uv run scripts/generate_palette.py show code-blue`
+3. Or generate from brand: `uv run scripts/generate_palette.py brand "#BRAND" light`
+4. Or follow `references/color-design/workflow.md` for custom design.
 
 Write slides:
 1. Follow `references/marpit-authoring/syntax-guide.md`.
