@@ -10,6 +10,7 @@ from datetime import datetime
 
 # Template paths relative to script location
 TEMPLATES = {
+    "minimal": "assets/templates/minimal.md",
     "technical-dark": "assets/templates/technical-dark.md",
     "professional-light": "assets/templates/professional-light.md",
     "minimal-keynote": "assets/templates/minimal-keynote.md",
@@ -56,6 +57,7 @@ if __name__ == "__main__":
         print("Usage: init_presentation.py <template> <output-file> <title> [author]")
         print("\nAvailable templates:")
         for name, desc in {
+            "minimal": "Bare minimum structure (5 slides)",
             "technical-dark": "Dark theme for code/technical content",
             "professional-light": "Light theme for business presentations",
             "minimal-keynote": "Minimal design for story-driven talks",

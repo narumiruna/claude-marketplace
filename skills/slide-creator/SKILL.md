@@ -17,10 +17,22 @@ Create professional Marp/Marpit presentations, diagrams, and color systems with 
 
 ## Quick Start
 
-**New presentation from template**:
+### Two Ways to Start
+
+**Option 1: Use scripts** (automated):
 ```bash
-uv run scripts/init_presentation.py technical-dark my-deck.md "My Presentation" "John Doe"
+uv run scripts/init_presentation.py technical-dark my-deck.md "My Title" "Author"
 ```
+
+**Option 2: Work manually** (full control):
+- Copy a template from `assets/templates/` → customize
+- Design colors following `references/color-design/workflow.md`
+- Write slides following `references/marpit-authoring/syntax-guide.md`
+- Add diagrams following `references/svg-illustration/core-rules.md`
+
+**Study examples first**: Read `assets/examples/` to see working presentations before starting.
+
+### Script Commands
 
 **Browse and generate color palettes**:
 ```bash
@@ -31,13 +43,16 @@ uv run scripts/generate_palette.py svg-list                # List SVG quick pale
 uv run scripts/generate_palette.py svg-show default        # Show SVG palette details
 ```
 
-**Available templates**:
+**Templates** (starting points - copy and fill in your content):
+- `assets/templates/minimal.md` - Bare minimum structure (5 slides)
 - `assets/templates/technical-dark.md` - Dark theme for code/technical content
 - `assets/templates/professional-light.md` - Light theme for business presentations
 - `assets/templates/minimal-keynote.md` - Minimal design for story-driven talks
 
-**Quick example**:
-See `assets/examples/quick-start.md` for a minimal working presentation.
+**Examples** (learning references - study patterns and copy techniques):
+- `assets/examples/with-diagrams.md` - Shows inline SVG diagram integration
+- `assets/examples/with-palette.md` - Shows custom palette application
+- `assets/examples/full-presentation.md` - Shows all features combined (architecture + charts + code)
 
 **Common icons** (ready to use in slides):
 ```markdown
