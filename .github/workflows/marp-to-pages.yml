@@ -36,9 +36,20 @@ jobs:
         env:
           MARP_USER: root:root
 
-      - name: Copy slide assets
+      - name: Copy slide assets (non-Markdown)
         run: |
-          cp -rf examples/slides/ build/docs/
+          # Marp Build runs in a Docker container and may leave root-owned files in `build/docs/`.
+          # Ensure the runner user can write before copying assets.
+          sudo chown -R "$(id -u)":"$(id -g)" build/docs || true
+
+          # Marp CLI references local assets (svg/png/etc.) by relative path in HTML,
+          # but it does not copy those assets into the output directory.
+          rsync -a \
+            --exclude='*.md' \
+            --exclude='*.MD' \
+            --exclude='*.markdown' \
+            --exclude='*.MARKDOWN' \
+            examples/slides/ build/docs/
 
       # - name: Marp Build (README.pdf)
       #   uses: docker://marpteam/marp-cli:latest
