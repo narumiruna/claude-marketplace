@@ -15,6 +15,10 @@ This repository serves two purposes:
 .
 ├── .claude-plugin/
 │   └── marketplace.json       # Marketplace catalog (defines available plugins)
+├── .github/workflows/
+│   └── marp-to-pages.yml     # CI workflow: builds slides → GitHub Pages
+├── plugins/
+│   └── python-code-quality/  # Hooks-based plugin (inline definition)
 ├── skills/
 │   ├── python-peewee/         # Peewee ORM skill
 │   │   └── SKILL.md
@@ -27,9 +31,15 @@ This repository serves two purposes:
 │           ├── color-design/       # Color system design
 │           ├── marpit-authoring/   # Marpit Markdown slides
 │           └── svg-illustration/   # SVG diagrams
-├── GUIDE.md                   # Complete marketplace creation guide
-├── README.md                  # Installation and usage instructions
-├── CLAUDE.md                  # This file
+├── scripts/
+│   └── sync_skills.sh        # Development: sync skills to ~/.codex/skills/
+├── examples/slides/          # Live slide examples (built by CI)
+│   ├── marketplace/          # Marketplace demo presentation
+│   └── meanflows/            # Meanflows methodology presentation
+├── build/                    # Generated: Marp HTML output (gitignored)
+├── GUIDE.md                  # Complete marketplace creation guide
+├── README.md                 # Installation and usage instructions
+├── CLAUDE.md                 # This file
 └── LICENSE
 ```
 
@@ -190,17 +200,72 @@ When adding plugins to this marketplace:
 5. **Update README.md**: Document the new plugin in the "Available Plugins" section
 6. **Test locally**: Use `/plugin marketplace add .` then `/plugin install <name>@narumi`
 
-## Validating Changes
+## Common Development Workflows
 
-After editing marketplace.json or adding plugins:
+### Testing Marketplace Changes Locally
+
+After modifying marketplace.json or plugins:
+
+1. **Validate marketplace structure**:
+   ```shell
+   /plugin validate .
+   ```
+
+2. **Test installation locally**:
+   ```shell
+   /plugin marketplace add .
+   /plugin install <plugin-name>@narumi
+   ```
+
+3. **Remove and reinstall** (after making changes):
+   ```shell
+   /plugin uninstall <plugin-name>
+   /plugin install <plugin-name>@narumi
+   ```
+
+### Working with Skills During Development
+
+Use `scripts/sync_skills.sh` to sync skills to `~/.codex/skills/` for rapid testing without reinstalling plugins:
 
 ```shell
-/plugin validate .
+./scripts/sync_skills.sh
 ```
+
+This is useful when iterating on skill content (SKILL.md and references/) without going through the full plugin installation flow.
+
+### Building and Previewing Slides
+
+The `examples/slides/` directory contains live slide examples that are built and deployed via GitHub Actions.
+
+**Build slides locally** (requires Docker):
+```shell
+docker run --rm -v $PWD:/home/marp/app/ -e MARP_USER="$(id -u):$(id -g)" marpteam/marp-cli:latest -I examples/slides -o build/
+```
+
+**Preview built slides**:
+```shell
+# After building, open in browser
+open build/marketplace/slides.html
+open build/meanflows/slides.html
+```
+
+**Slide project structure**:
+```
+examples/slides/<project>/
+├── slides.md          # Marpit Markdown source
+├── README.md          # Project description
+└── diagrams/          # SVG illustrations (optional)
+    └── *.svg
+```
+
+The CI workflow (`.github/workflows/marp-to-pages.yml`):
+1. Copies all slide assets from `examples/slides/` to `build/`
+2. Runs Marp CLI to convert `.md` → `.html`
+3. Deploys to GitHub Pages (production on push to main, preview on PRs)
 
 ### Pre-commit Checks
 
-This repository uses pre-commit hooks to ensure code quality. You can run checks manually using:
+This repository uses pre-commit hooks to ensure code quality. Run checks manually:
 
 **Using prek** (recommended):
 ```shell
@@ -220,6 +285,15 @@ uv tool install prek
 # Or install pre-commit
 uv tool install pre-commit
 ```
+
+**Configured hooks**:
+- YAML/JSON validation
+- Line ending normalization (LF)
+- Trailing whitespace removal
+- SVG linting
+- Python: ruff (format + lint), ty (type check)
+
+### Documentation Editing Guidelines
 
 After editing GUIDE.md, verify:
 - All JSON examples are syntactically valid
