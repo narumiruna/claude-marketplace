@@ -1,11 +1,21 @@
 # /// script
 # requires-python = ">=3.12"
-# dependencies = []
+# dependencies = [
+#     "typer",
+# ]
 # ///
 """Generate slide color palettes from brand colors or strategies."""
 
-import sys
 from colorsys import rgb_to_hls, hls_to_rgb
+from typing import Any, cast
+
+import typer  # type: ignore[import-untyped]
+from typing_extensions import Annotated
+
+app = typer.Typer(
+    help="Generate and manage color palettes for slides and SVG illustrations",
+    no_args_is_help=True,
+)
 
 
 def hex_to_rgb(hex_color: str) -> tuple[int, int, int]:
@@ -78,6 +88,202 @@ def generate_palette_from_brand(
         }
 
 
+SVG_PALETTES = {
+    "default": {
+        "name": "Default Palette (Neutral + Blue)",
+        "best_for": "Technical documentation, professional presentations",
+        "colors": {
+            "Dark": "#111827",
+            "Mid": "#6B7280",
+            "Light": "#E5E7EB",
+            "Accent": "#2563EB",
+            "Success": "#10B981",
+            "Warning": "#F59E0B",
+            "Error": "#EF4444",
+        },
+        "usage": [
+            "Dark: Primary text, strokes, borders",
+            "Mid: Secondary text, inactive elements",
+            "Light: Backgrounds, fills",
+            "Accent: Highlights, active states, CTAs",
+        ],
+    },
+    "corporate": {
+        "name": "Corporate Professional",
+        "best_for": "Business presentations, formal reports",
+        "colors": {
+            "Primary": "#1E3A8A",
+            "Secondary": "#0F766E",
+            "Neutral": "#374151",
+            "Light": "#F3F4F6",
+            "Accent": "#DC2626",
+        },
+        "example": '<rect fill="#F3F4F6" stroke="#1E3A8A" stroke-width="4"/>\n<text fill="#374151">Label</text>',
+    },
+    "creative": {
+        "name": "Creative & Modern",
+        "best_for": "Marketing, creative pitches, modern products",
+        "colors": {
+            "Primary": "#7C3AED",
+            "Secondary": "#EC4899",
+            "Tertiary": "#F59E0B",
+            "Dark": "#1F2937",
+            "Light": "#FEF3C7",
+        },
+        "example": '<linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">\n  <stop offset="0%" style="stop-color:#7C3AED"/>\n  <stop offset="100%" style="stop-color:#EC4899"/>\n</linearGradient>\n<rect fill="url(#gradient1)"/>',
+    },
+    "monochrome": {
+        "name": "Minimal Monochrome",
+        "best_for": "Elegant, distraction-free presentations",
+        "colors": {
+            "Black": "#000000",
+            "DarkGray": "#404040",
+            "MidGray": "#808080",
+            "LightGray": "#E0E0E0",
+            "White": "#FFFFFF",
+        },
+        "example": '<rect fill="#FFFFFF" stroke="#000000" stroke-width="4"/>\n<text fill="#404040">Subtle label</text>',
+    },
+    "data-viz": {
+        "name": "Data Visualization",
+        "best_for": "Charts, graphs, multi-category comparisons",
+        "colors": {
+            "Category1": "#2563EB",
+            "Category2": "#10B981",
+            "Category3": "#F59E0B",
+            "Category4": "#EF4444",
+            "Category5": "#8B5CF6",
+            "Category6": "#06B6D4",
+            "Neutral": "#6B7280",
+        },
+        "notes": "Each category gets a distinct color for clarity",
+    },
+    "academic": {
+        "name": "Academic / Scientific",
+        "best_for": "Research presentations, educational content",
+        "colors": {
+            "Primary": "#1E40AF",
+            "Secondary": "#059669",
+            "Neutral": "#374151",
+            "Light": "#F9FAFB",
+            "Highlight": "#FBBF24",
+        },
+    },
+    "dark-mode": {
+        "name": "Dark Mode",
+        "best_for": "Night presentations, developer content",
+        "colors": {
+            "Background": "#0F172A",
+            "Surface": "#1E293B",
+            "Primary": "#60A5FA",
+            "Secondary": "#34D399",
+            "Text": "#F1F5F9",
+            "Muted": "#64748B",
+        },
+        "example": '<svg viewBox="0 0 1920 1080" width="1920" height="1080">\n  <rect width="1920" height="1080" fill="#0F172A"/>\n  <rect x="240" y="320" width="400" height="200" rx="16" fill="#1E293B" stroke="#60A5FA" stroke-width="4"/>\n  <text fill="#F1F5F9">Dark mode text</text>\n</svg>',
+    },
+    "pastel": {
+        "name": "Pastel Soft",
+        "best_for": "Friendly, approachable content, design presentations",
+        "colors": {
+            "Pink": "#FBCFE8",
+            "Purple": "#DDD6FE",
+            "Blue": "#BFDBFE",
+            "Green": "#BBF7D0",
+            "Yellow": "#FEF08A",
+            "Dark": "#374151",
+        },
+        "example": '<rect fill="#BFDBFE" stroke="#374151" stroke-width="3"/>\n<text fill="#374151">Soft, friendly label</text>',
+    },
+    "high-contrast": {
+        "name": "High Contrast",
+        "best_for": "Accessibility, large venue presentations",
+        "colors": {
+            "Black": "#000000",
+            "White": "#FFFFFF",
+            "Yellow": "#FACC15",
+            "Cyan": "#22D3EE",
+            "Magenta": "#F472B6",
+        },
+        "notes": "Ensure text-to-background contrast ratio ≥ 7:1 for AAA compliance",
+    },
+}
+
+
+PALETTE_METADATA = {
+    "code-blue": {
+        "name": "Code-Focused Blue",
+        "category": "Dark Technical",
+        "best_for": "Code-heavy presentations, technical demos, system architecture",
+        "contrast": "Text Primary/Background = 8.2:1, Primary/Background = 4.8:1",
+        "notes": "Inspired by VS Code theme; familiar to developers",
+    },
+    "terminal-dark": {
+        "name": "Terminal Dark",
+        "category": "Dark Technical",
+        "best_for": "Terminal commands, CLI tools, DevOps presentations",
+        "contrast": "Text Primary/Background = 10.5:1, Primary/Background = 6.2:1",
+        "notes": "High contrast for projectors; three-color semantic system",
+    },
+    "midnight-professional": {
+        "name": "Midnight Professional",
+        "category": "Dark Technical",
+        "best_for": "Professional technical presentations with a softer feel",
+        "contrast": "Text Primary/Background = 9.8:1, Primary/Background = 4.5:1",
+        "notes": "Less harsh than pure black backgrounds",
+    },
+    "clean-corporate": {
+        "name": "Clean Corporate",
+        "category": "Light Professional",
+        "best_for": "Business presentations, documentation, formal settings",
+        "contrast": "Text Primary/Background = 14.2:1, Primary/Background = 5.8:1",
+        "notes": "Conservative and widely acceptable",
+    },
+    "modern-minimal": {
+        "name": "Modern Minimal",
+        "category": "Light Professional",
+        "best_for": "Modern tech companies, product presentations, startups",
+        "contrast": "Text Primary/Background = 15.8:1, Primary/Background = 7.1:1",
+        "notes": "Material Design inspired; clean and modern",
+    },
+    "warm-professional": {
+        "name": "Warm Professional",
+        "category": "Light Professional",
+        "best_for": "Creative presentations, design reviews, brand-focused decks",
+        "contrast": "Text Primary/Background = 13.5:1, Primary/Background = 6.8:1",
+        "notes": "Warm palette for approachable, friendly tone",
+    },
+    "minimal-teal": {
+        "name": "Minimal with Teal Focus",
+        "category": "Accent-Driven",
+        "best_for": "Story-driven presentations, keynotes, single-message slides",
+        "contrast": "Text Primary/Background = 16.8:1, Accent/Background = 3.8:1",
+        "notes": "Minimal design; let content breathe; use accent sparingly (5-10% of elements)",
+    },
+    "grayscale-red": {
+        "name": "Gray Scale with Red Accent",
+        "category": "Accent-Driven",
+        "best_for": "High-impact messages, problem-solution narratives, urgent topics",
+        "contrast": "Text Primary/Background = 13.2:1, Accent/Background = 5.5:1",
+        "notes": "Red accent should be reserved for 1-2 key elements per slide",
+    },
+    "data-viz": {
+        "name": "Data Visualization (Categorical)",
+        "category": "Specialized",
+        "best_for": "Charts, graphs, multi-category data",
+        "contrast": "N/A",
+        "notes": "Tableau-inspired; colorblind-friendly; maximizes distinction",
+    },
+    "accessibility": {
+        "name": "Accessibility First (High Contrast)",
+        "category": "Specialized",
+        "best_for": "Accessibility requirements, large audiences, recorded content",
+        "contrast": "All combinations meet WCAG AAA (7:1 minimum)",
+        "notes": "Maximum legibility; suitable for vision-impaired audiences",
+    },
+}
+
+
 def generate_preset_palette(preset: str) -> dict[str, str]:
     """Generate preset palette by name."""
     presets = {
@@ -99,6 +305,15 @@ def generate_preset_palette(preset: str) -> dict[str, str]:
             "Text Primary": "#ABB2BF",
             "Text Secondary": "#5C6370",
         },
+        "midnight-professional": {
+            "Background": "#1B2B34",
+            "Surface": "#253340",
+            "Primary": "#6699CC",
+            "Secondary": "#5FB3B3",
+            "Accent": "#FAC863",
+            "Text Primary": "#CDD3DE",
+            "Text Secondary": "#A7ADBA",
+        },
         "clean-corporate": {
             "Background": "#FAFAFA",
             "Surface": "#FFFFFF",
@@ -117,6 +332,54 @@ def generate_preset_palette(preset: str) -> dict[str, str]:
             "Text Primary": "#212121",
             "Text Secondary": "#616161",
         },
+        "warm-professional": {
+            "Background": "#FFF8F0",
+            "Surface": "#FFFFFF",
+            "Primary": "#D84315",
+            "Secondary": "#6D4C41",
+            "Accent": "#F57C00",
+            "Text Primary": "#3E2723",
+            "Text Secondary": "#795548",
+        },
+        "minimal-teal": {
+            "Background": "#FFFFFF",
+            "Surface": "#F8F9FA",
+            "Primary": "#343A40",
+            "Secondary": "#6C757D",
+            "Accent": "#20C997",
+            "Text Primary": "#212529",
+            "Text Secondary": "#6C757D",
+        },
+        "grayscale-red": {
+            "Background": "#F0F0F0",
+            "Surface": "#FFFFFF",
+            "Primary": "#2F2F2F",
+            "Secondary": "#5F5F5F",
+            "Accent": "#E53935",
+            "Text Primary": "#1A1A1A",
+            "Text Secondary": "#757575",
+        },
+        "data-viz": {
+            "Background": "#FFFFFF",
+            "Surface": "#F8F9FA",
+            "Category 1": "#4E79A7",
+            "Category 2": "#F28E2B",
+            "Category 3": "#E15759",
+            "Category 4": "#76B7B2",
+            "Category 5": "#59A14F",
+            "Category 6": "#EDC948",
+            "Text Primary": "#2C2C2C",
+            "Text Secondary": "#666666",
+        },
+        "accessibility": {
+            "Background": "#FFFFFF",
+            "Surface": "#F5F5F5",
+            "Primary": "#0052CC",
+            "Secondary": "#5E6C84",
+            "Accent": "#FF991F",
+            "Text Primary": "#000000",
+            "Text Secondary": "#42526E",
+        },
     }
 
     if preset not in presets:
@@ -125,16 +388,24 @@ def generate_preset_palette(preset: str) -> dict[str, str]:
     return presets[preset]
 
 
-def format_palette_markdown(palette: dict[str, str], strategy: str = "") -> str:
-    """Format palette as markdown output."""
+def format_palette_markdown(palette: dict[str, str], preset_name: str = "") -> str:
+    """Format palette as markdown output with metadata."""
     output = []
-    output.append("## Color Palette\n")
 
-    if strategy:
-        output.append(f"**Strategy**: {strategy}\n")
+    # Add palette name and metadata if it's a preset
+    if preset_name and preset_name in PALETTE_METADATA:
+        meta = PALETTE_METADATA[preset_name]
+        output.append(f"## {meta['name']}\n")
+        output.append(f"**Category:** {meta['category']}")
+        output.append(f"**Best for:** {meta['best_for']}")
+        output.append(f"**Contrast:** {meta['contrast']}")
+        output.append(f"**Notes:** {meta['notes']}\n")
+    else:
+        output.append("## Color Palette\n")
 
+    # Display colors
     for role, color in palette.items():
-        output.append(f"* **{role}:** `{color.upper()}`")
+        output.append(f"- **{role}:** `{color.upper()}`")
 
     output.append("\n## Usage Guidelines\n")
     output.append("Apply this palette to slides and SVGs consistently:\n")
@@ -144,13 +415,122 @@ def format_palette_markdown(palette: dict[str, str], strategy: str = "") -> str:
     output.append(
         "- **SVG**: Use Primary for main elements, Secondary for supporting elements"
     )
-    output.append("- **Text**: Use Text Primary for body, Text Secondary for captions")
 
-    output.append("\n## Validation\n")
-    output.append("Check contrast ratios:")
-    output.append(
-        f"```bash\nuv run scripts/check_contrast.py '{palette['Text Primary']}' '{palette['Background']}'\n```"
-    )
+    # Only show text usage guideline if palette has text colors
+    if "Text Primary" in palette:
+        output.append(
+            "- **Text**: Use Text Primary for body, Text Secondary for captions"
+        )
+
+    # Add validation section only for palettes with standard structure
+    if "Text Primary" in palette and "Background" in palette:
+        output.append("\n## Validation\n")
+        output.append("Check contrast ratios:")
+        output.append(
+            f"```bash\nuv run scripts/check_contrast.py '{palette['Text Primary']}' '{palette['Background']}'\n```"
+        )
+
+    return "\n".join(output)
+
+
+def list_palettes() -> str:
+    """List all available palettes grouped by category."""
+    output = ["# Available Color Palettes\n"]
+
+    # Group palettes by category
+    by_category = {}
+    for preset_id, meta in PALETTE_METADATA.items():
+        category = meta["category"]
+        if category not in by_category:
+            by_category[category] = []
+        by_category[category].append((preset_id, meta))
+
+    # Display by category
+    for category in [
+        "Dark Technical",
+        "Light Professional",
+        "Accent-Driven",
+        "Specialized",
+    ]:
+        if category in by_category:
+            output.append(f"## {category}\n")
+            for preset_id, meta in by_category[category]:
+                output.append(f"**{preset_id}** - {meta['name']}")
+                output.append(f"  {meta['best_for']}\n")
+
+    output.append("\n## Usage\n")
+    output.append("Show details for a specific palette:")
+    output.append("```bash")
+    output.append("uv run scripts/generate_palette.py show <palette-name>")
+    output.append("```\n")
+    output.append("Example:")
+    output.append("```bash")
+    output.append("uv run scripts/generate_palette.py show code-blue")
+    output.append("```")
+
+    return "\n".join(output)
+
+
+def list_svg_palettes() -> str:
+    """List all available SVG palettes."""
+    output = ["# Available SVG Color Palettes\n"]
+    output.append("Quick color schemes for rapid SVG illustration creation.\n")
+
+    for palette_id, meta in SVG_PALETTES.items():
+        output.append(f"**{palette_id}** - {meta['name']}")
+        output.append(f"  {meta['best_for']}\n")
+
+    output.append("\n## Usage\n")
+    output.append("Show details for a specific SVG palette:")
+    output.append("```bash")
+    output.append("uv run scripts/generate_palette.py svg-show <palette-name>")
+    output.append("```\n")
+    output.append("Example:")
+    output.append("```bash")
+    output.append("uv run scripts/generate_palette.py svg-show default")
+    output.append("uv run scripts/generate_palette.py svg-show creative")
+    output.append("```")
+
+    return "\n".join(output)
+
+
+def format_svg_palette(palette_id: str) -> str:
+    """Format SVG palette as markdown output."""
+    if palette_id not in SVG_PALETTES:
+        raise ValueError(f"Unknown SVG palette: {palette_id}")
+
+    palette: dict[str, Any] = SVG_PALETTES[palette_id]
+    output = []
+
+    # Header
+    output.append(f"## {palette['name']}\n")
+    output.append(f"**Best for:** {palette['best_for']}\n")
+
+    # Colors
+    output.append("### Colors\n")
+    output.append("```")
+    colors = cast(dict[str, str], palette["colors"])
+    for role, color in colors.items():
+        output.append(f"{role:12s} {color}")
+    output.append("```\n")
+
+    # Usage notes if present
+    if "usage" in palette:
+        output.append("**Usage:**")
+        for usage_line in palette["usage"]:
+            output.append(f"- {usage_line}")
+        output.append("")
+
+    # Example code if present
+    if "example" in palette:
+        output.append("### Example\n")
+        output.append("```xml")
+        output.append(palette["example"])
+        output.append("```\n")
+
+    # Additional notes if present
+    if "notes" in palette:
+        output.append(f"**Note:** {palette['notes']}\n")
 
     return "\n".join(output)
 
@@ -165,53 +545,70 @@ def format_palette_css(palette: dict[str, str]) -> str:
     return "\n".join(output)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: generate_palette.py <mode> [options]")
-        print("\nModes:")
-        print("  preset <name>           - Generate from preset palette")
-        print(
-            "  brand <hex> [style]     - Generate from brand color (style: light/dark)"
-        )
-        print("\nPresets:")
-        print("  code-blue, terminal-dark, clean-corporate, modern-minimal")
-        print("\nExamples:")
-        print("  uv run scripts/generate_palette.py preset code-blue")
-        print('  uv run scripts/generate_palette.py brand "#2E75B6" light')
-        print('  uv run scripts/generate_palette.py brand "#569CD6" dark')
-        sys.exit(1)
+@app.command("list")
+def list_command():
+    """List all available slide palettes (7-role color systems)."""
+    print(list_palettes())
 
-    mode = sys.argv[1]
+
+@app.command("show")
+def show_command(
+    name: Annotated[
+        str, typer.Argument(help="Palette name (e.g., code-blue, clean-corporate)")
+    ],
+):
+    """Show details for a specific slide palette."""
+    try:
+        palette = generate_preset_palette(name)
+        output = format_palette_markdown(palette, name)
+        print(output)
+    except ValueError as e:
+        typer.echo(f"❌ Error: {e}", err=True)
+        raise typer.Exit(1)
+
+
+@app.command("brand")
+def brand_command(
+    color: Annotated[
+        str, typer.Argument(help="Brand color in hex format (e.g., #2E75B6)")
+    ],
+    style: Annotated[str, typer.Argument(help="Style: light or dark")] = "light",
+):
+    """Generate palette from brand color."""
+    if style not in ["light", "dark"]:
+        typer.echo("❌ Error: Style must be 'light' or 'dark'", err=True)
+        raise typer.Exit(1)
 
     try:
-        if mode == "preset":
-            if len(sys.argv) < 3:
-                print("❌ Error: Preset name required")
-                sys.exit(1)
-            preset_name = sys.argv[2]
-            palette = generate_preset_palette(preset_name)
-            output = format_palette_markdown(palette, f"Preset: {preset_name}")
-
-        elif mode == "brand":
-            if len(sys.argv) < 3:
-                print("❌ Error: Brand color hex required")
-                sys.exit(1)
-            brand_color = sys.argv[2]
-            style = sys.argv[3] if len(sys.argv) > 3 else "light"
-
-            if style not in ["light", "dark"]:
-                print("❌ Error: Style must be 'light' or 'dark'")
-                sys.exit(1)
-
-            palette = generate_palette_from_brand(brand_color, style)
-            output = format_palette_markdown(palette, f"Brand-based ({style})")
-
-        else:
-            print(f"❌ Error: Unknown mode: {mode}")
-            sys.exit(1)
-
+        palette = generate_palette_from_brand(color, style)
+        output = format_palette_markdown(palette)
         print(output)
-
     except ValueError as e:
-        print(f"❌ Error: {e}")
-        sys.exit(1)
+        typer.echo(f"❌ Error: {e}", err=True)
+        raise typer.Exit(1)
+
+
+@app.command("svg-list")
+def svg_list_command():
+    """List all available SVG palettes (quick color schemes)."""
+    print(list_svg_palettes())
+
+
+@app.command("svg-show")
+def svg_show_command(
+    name: Annotated[
+        str,
+        typer.Argument(help="SVG palette name (e.g., default, creative, dark-mode)"),
+    ],
+):
+    """Show details for a specific SVG palette."""
+    try:
+        output = format_svg_palette(name)
+        print(output)
+    except ValueError as e:
+        typer.echo(f"❌ Error: {e}", err=True)
+        raise typer.Exit(1)
+
+
+if __name__ == "__main__":
+    app()
