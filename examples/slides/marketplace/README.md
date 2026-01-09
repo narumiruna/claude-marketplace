@@ -1,1 +1,1 @@
-[GitHub Pages](https://narumiruna.github.io/claude-marketplace/docs/marketplace/slides.html)
+[GitHub Pages](https://narumiruna.github.io/claude-marketplace/marketplace/slides.html)
