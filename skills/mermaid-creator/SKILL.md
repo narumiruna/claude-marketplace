@@ -80,6 +80,51 @@ classDiagram
     User "1" --> "*" Post : creates
 ```
 
+## Example Files
+
+The skill includes ready-to-use `.mmd` example files in `assets/examples/` that can be copied and modified:
+
+```
+assets/examples/
+├── flowchart/          # 10 flowchart examples
+│   ├── basic.mmd
+│   ├── node-shapes.mmd
+│   ├── connections.mmd
+│   ├── process-flow.mmd
+│   ├── decision-tree.mmd
+│   └── ...
+├── sequence/           # 12 sequence diagram examples
+│   ├── basic.mmd
+│   ├── rest-api.mmd
+│   ├── authentication-flow.mmd
+│   └── ...
+├── class/              # 13 class diagram examples
+│   ├── basic.mmd
+│   ├── inheritance.mmd
+│   ├── interface.mmd
+│   └── ...
+├── state/              # 13 state diagram examples
+│   ├── basic.mmd
+│   ├── order-processing.mmd
+│   ├── authentication.mmd
+│   └── ...
+├── er/                 # 10 ER diagram examples
+│   ├── basic.mmd
+│   ├── blog-system.mmd
+│   ├── ecommerce.mmd
+│   └── ...
+└── other/              # 16 other diagram type examples
+    ├── gantt-basic.mmd
+    ├── pie-basic.mmd
+    ├── git-feature-branch.mmd
+    ├── journey-shopping.mmd
+    ├── quadrant-basic.mmd
+    ├── timeline-basic.mmd
+    └── ...
+```
+
+**Usage**: Copy example files as templates for your diagrams. All examples are tested and ready to use with the Mermaid CLI.
+
 ## Mermaid CLI
 
 ### Installation
