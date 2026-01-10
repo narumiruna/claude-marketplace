@@ -13,177 +13,52 @@ classDiagram
     }
 ```
 
+**Example**: `assets/examples/class/basic.mmd`
+
 ## Visibility
 
-- `+` Public
-- `-` Private
-- `#` Protected
-- `~` Package/Internal
+| Modifier | Symbol | Meaning |
+|----------|--------|---------|
+| Public | `+` | Accessible everywhere |
+| Private | `-` | Class only |
+| Protected | `#` | Class and subclasses |
+| Package | `~` | Package/internal |
 
-```mermaid
-classDiagram
-    class BankAccount {
-        +String accountNumber
-        -double balance
-        #String ownerName
-        ~int transactionCount
-        +deposit(amount)
-        +withdraw(amount)
-        -calculateInterest()
-    }
-```
+**Example**: `assets/examples/class/visibility.mmd`
 
 ## Relationships
 
-```mermaid
-classDiagram
-    A --|> B : Inheritance
-    C --* D : Composition
-    E --o F : Aggregation
-    G --> H : Association
-    I -- J : Link
-    K ..> L : Dependency
-    M ..|> N : Realization
-```
+| Type | Syntax | Meaning |
+|------|--------|---------|
+| Inheritance | `<|--` | Extends/inherits |
+| Composition | `*--` | Strong ownership (part-of) |
+| Aggregation | `o--` | Weak ownership (has-a) |
+| Association | `-->` | Uses/depends on |
+| Link | `--` | General connection |
+| Dependency | `..>` | Temporary usage |
+| Realization | `..|>` | Implements interface |
 
-### Relationship Notation
+Add cardinality: `Customer "1" --> "*" Order`
 
-- `--|>` Inheritance (extends)
-- `--*` Composition (strong ownership)
-- `--o` Aggregation (weak ownership)
-- `-->` Association (uses)
-- `--` Link (general connection)
-- `..>` Dependency (temporary usage)
-- `..|>` Realization (implements)
-
-## Cardinality
-
-```mermaid
-classDiagram
-    Customer "1" --> "*" Order
-    Order "*" --> "1..*" OrderItem
-    OrderItem "*" --> "1" Product
-```
-
-Common multiplicities:
-- `1` - Exactly one
-- `0..1` - Zero or one
-- `*` or `0..*` - Zero or more
-- `1..*` - One or more
-- `n..m` - Range
+**Examples**:
+- `assets/examples/class/relationships.mmd`
+- `assets/examples/class/cardinality.mmd`
 
 ## Common Patterns
 
-### Inheritance Hierarchy
+Refer to example files for complete implementations:
 
-```mermaid
-classDiagram
-    class Animal {
-        +String name
-        +int age
-        +eat()
-        +sleep()
-    }
+- **Inheritance**: `assets/examples/class/inheritance.mmd`
+  Animal base class with Dog and Cat subclasses
 
-    class Dog {
-        +String breed
-        +bark()
-    }
+- **Interface Implementation**: `assets/examples/class/interface.mmd`
+  Circle implementing Drawable and Resizable interfaces
 
-    class Cat {
-        +int livesLeft
-        +meow()
-    }
+- **Composition vs Aggregation**: `assets/examples/class/composition-aggregation.mmd`
+  Car with Engine (composition) and Wheels (aggregation)
 
-    Animal <|-- Dog
-    Animal <|-- Cat
-```
-
-### Interface Implementation
-
-```mermaid
-classDiagram
-    class Drawable {
-        <<interface>>
-        +draw()
-    }
-
-    class Resizable {
-        <<interface>>
-        +resize(width, height)
-    }
-
-    class Circle {
-        +int radius
-        +draw()
-        +resize(width, height)
-    }
-
-    Drawable <|.. Circle
-    Resizable <|.. Circle
-```
-
-### Composition vs Aggregation
-
-```mermaid
-classDiagram
-    class Car {
-        -Engine engine
-        -List~Wheel~ wheels
-        +start()
-    }
-
-    class Engine {
-        +int horsepower
-        +start()
-    }
-
-    class Wheel {
-        +int diameter
-    }
-
-    %% Composition: Engine cannot exist without Car
-    Car *-- Engine
-
-    %% Aggregation: Wheels can exist independently
-    Car o-- Wheel
-```
-
-### Full System Example
-
-```mermaid
-classDiagram
-    class User {
-        +String username
-        +String email
-        -String passwordHash
-        +login()
-        +logout()
-    }
-
-    class Post {
-        +String title
-        +String content
-        +DateTime createdAt
-        +publish()
-    }
-
-    class Comment {
-        +String text
-        +DateTime createdAt
-        +edit()
-    }
-
-    class Category {
-        +String name
-        +String description
-    }
-
-    User "1" --> "*" Post : creates
-    Post "1" --> "*" Comment : has
-    User "1" --> "*" Comment : writes
-    Post "*" --> "*" Category : belongs to
-```
+- **Full System**: `assets/examples/class/full-system.mmd`
+  User, Post, Comment, Category relationships
 
 ## Best Practices
 
@@ -192,7 +67,6 @@ classDiagram
 - Use proper visibility modifiers
 - Choose appropriate relationships (composition vs aggregation)
 - Keep diagrams focused - split large systems into multiple diagrams
-- Use interfaces and abstract classes where appropriate
 - Include cardinality on associations
 - Group related classes visually
 
@@ -200,85 +74,30 @@ classDiagram
 
 ### Annotations
 
-```mermaid
-classDiagram
-    class Shape {
-        <<abstract>>
-        +draw()
-    }
+Common stereotypes: `<<interface>>`, `<<abstract>>`, `<<service>>`, `<<enumeration>>`, `<<singleton>>`
 
-    class Utility {
-        <<static>>
-        +helper()
-    }
-
-    class Config {
-        <<singleton>>
-    }
-```
-
-Common annotations:
-- `<<interface>>`
-- `<<abstract>>`
-- `<<service>>`
-- `<<enumeration>>`
-- `<<singleton>>`
+**Example**: `assets/examples/class/annotations.mmd`
 
 ### Generics
 
-```mermaid
-classDiagram
-    class List~T~ {
-        +add(T item)
-        +T get(int index)
-    }
+Type parameters: `List~T~`, `HashMap~K,V~`
 
-    class HashMap~K,V~ {
-        +put(K key, V value)
-        +V get(K key)
-    }
-```
+**Example**: `assets/examples/class/generics.mmd`
 
 ### Namespaces
 
-```mermaid
-classDiagram
-    namespace Models {
-        class User
-        class Post
-    }
+Group classes by namespace or module.
 
-    namespace Services {
-        class UserService
-        class PostService
-    }
-
-    UserService --> User
-    PostService --> Post
-```
+**Example**: `assets/examples/class/namespaces.mmd`
 
 ### Notes
 
-```mermaid
-classDiagram
-    class User {
-        +String email
-        +login()
-    }
+Add explanatory comments: `note for ClassName "Description"`
 
-    note for User "This class handles
-    user authentication
-    and profile management"
-```
+**Example**: `assets/examples/class/notes.mmd`
 
-### Return Types and Parameters
+### Return Types
 
-```mermaid
-classDiagram
-    class UserRepository {
-        +User findById(int id)
-        +List~User~ findAll()
-        +void save(User user)
-        +boolean delete(int id)
-    }
-```
+Specify method signatures: `User findById(int id)`, `List~User~ findAll()`
+
+**Example**: `assets/examples/class/return-types.mmd`

@@ -12,19 +12,25 @@ stateDiagram-v2
     Complete --> [*]
 ```
 
+Use `[*]` for initial and final states.
+
+**Example**: `assets/examples/state/basic.mmd`
+
 ## States
+
+Define named states:
 
 ```mermaid
 stateDiagram-v2
     state "Waiting for Input" as waiting
-    state "Processing Data" as processing
-
     [*] --> waiting
-    waiting --> processing : received
-    processing --> waiting : complete
 ```
 
+**Example**: `assets/examples/state/states.mmd`
+
 ## Composite States
+
+Nest states within other states:
 
 ```mermaid
 stateDiagram-v2
@@ -39,112 +45,35 @@ stateDiagram-v2
     Active --> [*] : stop
 ```
 
-## Choice (Conditional)
+**Example**: `assets/examples/state/composite-states.mmd`
 
-```mermaid
-stateDiagram-v2
-    [*] --> Input
-    Input --> Validate
+## Special States
 
-    state Validate <<choice>>
-    Validate --> Success : valid
-    Validate --> Error : invalid
+| Type | Syntax | Use Case |
+|------|--------|----------|
+| Choice | `<<choice>>` | Conditional branching |
+| Fork | `<<fork>>` | Split into parallel states |
+| Join | `<<join>>` | Merge parallel states |
 
-    Success --> [*]
-    Error --> Input : retry
-```
-
-## Fork and Join
-
-```mermaid
-stateDiagram-v2
-    [*] --> Start
-
-    state fork_state <<fork>>
-    Start --> fork_state
-    fork_state --> Task1
-    fork_state --> Task2
-
-    state join_state <<join>>
-    Task1 --> join_state
-    Task2 --> join_state
-    join_state --> Complete
-
-    Complete --> [*]
-```
+**Examples**:
+- Choice: `assets/examples/state/choice.mmd`
+- Fork/Join: `assets/examples/state/fork-join.mmd`
 
 ## Common Patterns
 
-### Simple State Machine
+Refer to example files for complete implementations:
 
-```mermaid
-stateDiagram-v2
-    [*] --> Off
-    Off --> On : power_on
-    On --> Off : power_off
-    On --> Standby : idle_timeout
-    Standby --> On : activity
-    Standby --> Off : power_off
-```
+- **Simple State Machine**: `assets/examples/state/simple-state-machine.mmd`
+  On/Off/Standby with power and timeout transitions
 
-### Order Processing
+- **Order Processing**: `assets/examples/state/order-processing.mmd`
+  Pending → Confirmed → Processing → Shipped → Delivered
 
-```mermaid
-stateDiagram-v2
-    [*] --> Pending
-    Pending --> Confirmed : payment_received
-    Pending --> Cancelled : timeout
+- **Authentication**: `assets/examples/state/authentication.mmd`
+  Login flow with MFA validation in composite state
 
-    Confirmed --> Processing : start_fulfillment
-    Processing --> Shipped : dispatched
-    Shipped --> Delivered : received
-    Delivered --> [*]
-
-    Confirmed --> Cancelled : customer_cancel
-    Processing --> Cancelled : out_of_stock
-```
-
-### User Authentication
-
-```mermaid
-stateDiagram-v2
-    [*] --> LoggedOut
-
-    LoggedOut --> Authenticating : login_attempt
-
-    state Authenticating {
-        [*] --> Validating
-        Validating --> CheckingMFA : credentials_valid
-        Validating --> Failed : credentials_invalid
-        CheckingMFA --> Verified : mfa_success
-        CheckingMFA --> Failed : mfa_failed
-    }
-
-    Authenticating --> LoggedIn : Verified
-    Authenticating --> LoggedOut : Failed
-
-    LoggedIn --> LoggedOut : logout
-    LoggedIn --> LoggedOut : session_timeout
-```
-
-### Document Workflow
-
-```mermaid
-stateDiagram-v2
-    [*] --> Draft
-    Draft --> Review : submit
-    Draft --> Archived : delete
-
-    Review --> Approved : approve
-    Review --> Rejected : reject
-    Review --> Draft : request_changes
-
-    Rejected --> Draft : revise
-    Approved --> Published : publish
-    Published --> Archived : archive
-
-    Archived --> [*]
-```
+- **Document Workflow**: `assets/examples/state/document-workflow.mmd`
+  Draft → Review → Approved/Rejected → Published
 
 ## Best Practices
 
@@ -161,86 +90,38 @@ stateDiagram-v2
 
 ### State Descriptions
 
+Add details to states:
+
 ```mermaid
 stateDiagram-v2
     Processing : Processing order
     Processing : Validating payment
     Processing : Updating inventory
-
-    [*] --> Processing
-    Processing --> Complete
-    Complete --> [*]
 ```
+
+**Example**: `assets/examples/state/descriptions.mmd`
 
 ### Notes
 
+Add explanatory notes:
+
 ```mermaid
 stateDiagram-v2
-    [*] --> Active
-    Active --> Inactive
-
     note right of Active
         This is the main
         operational state
     end note
-
-    note left of Inactive
-        System is idle
-    end note
 ```
 
-### Concurrency (Parallel States)
+**Example**: `assets/examples/state/notes.mmd`
 
-```mermaid
-stateDiagram-v2
-    [*] --> Active
+### Concurrency
 
-    state Active {
-        [*] --> ProcessA
-        --
-        [*] --> ProcessB
-    }
+Parallel regions within a state (use `--` separator):
 
-    Active --> [*]
-```
+**Example**: `assets/examples/state/concurrency.mmd`
 
-The `--` separator creates parallel regions within a composite state.
+### Complex Example
 
-### Direction
-
-Use `direction LR` for left-to-right layout:
-
-```mermaid
-stateDiagram-v2
-    direction LR
-    [*] --> A
-    A --> B
-    B --> [*]
-```
-
-## Complex Example
-
-```mermaid
-stateDiagram-v2
-    [*] --> Initialized
-
-    Initialized --> Ready : config_loaded
-
-    state Ready {
-        [*] --> Idle
-        Idle --> Busy : task_received
-        Busy --> Idle : task_complete
-        Busy --> Error : task_failed
-
-        state Error {
-            [*] --> Retrying
-            Retrying --> Idle : retry_success
-            Retrying --> Failed : retry_limit
-        }
-
-        Failed --> Idle : reset
-    }
-
-    Ready --> Shutdown : stop_signal
-    Shutdown --> [*]
-```
+**Example**: `assets/examples/state/complex.mmd`
+Demonstrates composite states, error handling, and state hierarchies.

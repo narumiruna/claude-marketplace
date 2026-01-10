@@ -7,11 +7,13 @@ Flowcharts represent processes, workflows, and decision trees.
 ```mermaid
 flowchart TD
     A[Start] --> B{Decision}
-    B -->|Yes| C[Process 1]
-    B -->|No| D[Process 2]
+    B -->|Yes| C[Process]
+    B -->|No| D[Alternative]
     C --> E[End]
     D --> E
 ```
+
+**Example**: See `assets/examples/flowchart/basic.mmd`
 
 ## Direction
 
@@ -22,97 +24,64 @@ flowchart TD
 
 ## Node Shapes
 
-```mermaid
-flowchart LR
-    A[Rectangle]
-    B(Rounded)
-    C([Stadium])
-    D[[Subroutine]]
-    E[(Database)]
-    F((Circle))
-    G>Flag]
-    H{Diamond}
-    I{{Hexagon}}
-    J[/Parallelogram/]
-    K[\Parallelogram alt\]
-    L[/Trapezoid\]
-    M[\Trapezoid alt/]
-```
+| Shape | Syntax | Use Case |
+|-------|--------|----------|
+| Rectangle | `[Text]` | Standard process |
+| Rounded | `(Text)` | Start/end points |
+| Stadium | `([Text])` | Alternative start/end |
+| Subroutine | `[[Text]]` | Predefined process |
+| Database | `[(Text)]` | Data storage |
+| Circle | `((Text))` | Connection point |
+| Diamond | `{Text}` | Decision |
+| Hexagon | `{{Text}}` | Preparation |
+| Parallelogram | `[/Text/]` or `[\Text\]` | Input/output |
+| Trapezoid | `[/Text\]` or `[\Text/]` | Manual operation |
+
+**Example**: See `assets/examples/flowchart/node-shapes.mmd`
 
 ## Connections
 
-```mermaid
-flowchart LR
-    A --> B        %% Arrow
-    C --- D        %% Line
-    E -.-> F       %% Dotted arrow
-    G -.- H        %% Dotted line
-    I ==> J        %% Thick arrow
-    K == L         %% Thick line
-```
+| Type | Syntax | Use Case |
+|------|--------|----------|
+| Arrow | `-->` | Standard flow |
+| Line | `---` | Connection without direction |
+| Dotted arrow | `-.->` | Optional or conditional |
+| Dotted line | `-.-` | Weak connection |
+| Thick arrow | `==>` | Primary/important flow |
+| Thick line | `===` | Strong connection |
 
-## Labeled Links
+Add labels: `A -->|Label| B`
 
-```mermaid
-flowchart LR
-    A -->|Label| B
-    C -.->|Text| D
-    E ==>|Thick| F
-```
+**Examples**:
+- `assets/examples/flowchart/connections.mmd`
+- `assets/examples/flowchart/labeled-links.mmd`
 
 ## Common Patterns
 
-### Simple Process Flow
+Refer to example files for complete implementations:
 
-```mermaid
-flowchart TD
-    Start[Start Process] --> Input[Get Input]
-    Input --> Validate{Valid?}
-    Validate -->|Yes| Process[Process Data]
-    Validate -->|No| Error[Show Error]
-    Process --> Save[(Save to DB)]
-    Save --> End[Complete]
-    Error --> End
-```
+- **Process Flow**: `assets/examples/flowchart/process-flow.mmd`
+  Standard input → validate → process → save pattern
 
-### Decision Tree
+- **Decision Tree**: `assets/examples/flowchart/decision-tree.mmd`
+  Authentication and role-based routing
 
-```mermaid
-flowchart TD
-    Start[User Request] --> Auth{Authenticated?}
-    Auth -->|No| Login[Redirect to Login]
-    Auth -->|Yes| Role{Check Role}
-    Role -->|Admin| AdminDash[Admin Dashboard]
-    Role -->|User| UserDash[User Dashboard]
-    Role -->|Guest| Limited[Limited Access]
-```
-
-### Workflow with Subprocesses
-
-```mermaid
-flowchart TD
-    A[Receive Order] --> B[[Validate Order]]
-    B --> C{Valid?}
-    C -->|Yes| D[[Process Payment]]
-    C -->|No| E[Reject Order]
-    D --> F{Payment OK?}
-    F -->|Yes| G[[Ship Order]]
-    F -->|No| H[Cancel Order]
-    G --> I[Complete]
-```
+- **Workflow with Subprocesses**: `assets/examples/flowchart/workflow-subprocess.mmd`
+  Order processing with validation and payment
 
 ## Best Practices
 
 - Use descriptive labels for nodes and connections
 - Keep flows top-to-bottom or left-to-right for readability
-- Group related processes visually
 - Use consistent node shapes (rectangles for processes, diamonds for decisions)
 - Limit complexity - split large flows into multiple diagrams
-- Use subgraphs for logical grouping (see advanced features)
+- Use subgraphs for logical grouping
 
 ## Advanced Features
 
 ### Subgraphs
+
+Group related processes:
 
 ```mermaid
 flowchart TD
@@ -121,32 +90,17 @@ flowchart TD
     subgraph Processing
         B --> C[Step 1]
         C --> D[Step 2]
-        D --> E[Step 3]
     end
 
-    E --> F[End]
+    D --> E[End]
 ```
+
+**Example**: `assets/examples/flowchart/subgraph.mmd`
 
 ### Styling
 
-```mermaid
-flowchart LR
-    A[Normal]
-    B[Styled Node]
-    C[Another Styled]
+Apply custom styles with `style` directive or `classDef`:
 
-    style B fill:#f9f,stroke:#333,stroke-width:4px
-    style C fill:#bbf,stroke:#333,stroke-width:2px
-```
-
-### Class Definitions
-
-```mermaid
-flowchart TD
-    A[Start]:::startClass --> B[Process]:::processClass
-    B --> C[End]:::endClass
-
-    classDef startClass fill:#90EE90,stroke:#333
-    classDef processClass fill:#87CEEB,stroke:#333
-    classDef endClass fill:#FFB6C1,stroke:#333
-```
+**Examples**:
+- `assets/examples/flowchart/styling.mmd`
+- `assets/examples/flowchart/class-definitions.mmd`
