@@ -35,7 +35,7 @@
     <rect class="card" x="0" y="0" width="760" height="520" rx="28"/>
     <g transform="translate(52 64)">
       <text class="kicker" x="0" y="0" dominant-baseline="hanging">MINIMAL MODULE</text>
-      <rect x="0" y="58" width="656" height="390" rx="22" fill="#121A33" stroke="#2B3558" stroke-width="3"/>
+      <rect x="0" y="58" width="656" height="458" rx="22" fill="#121A33" stroke="#2B3558" stroke-width="3"/>
       <g transform="translate(26 82)" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="22" fill="#E7ECF5">
         <text x="0" y="0" dominant-baseline="hanging">import torch</text>
         <text x="0" y="34" dominant-baseline="hanging">import torch.nn as nn</text>

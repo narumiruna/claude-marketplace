@@ -28,32 +28,32 @@
       <rect x="0" y="0" width="1320" height="520" rx="28" fill="#0F1730" stroke="#2B3558" stroke-width="3"/>
     </g>
 
-    <g transform="translate(64 70)">
+    <g transform="translate(64 54)">
       <g transform="translate(0 0)">
         <circle cx="20" cy="24" r="14" fill="#EE4C2C"/>
         <text class="h2" x="56" y="2" dominant-baseline="hanging">Tensors</text>
         <text class="body" x="56" y="52" dominant-baseline="hanging">Shapes, dtype, device, indexing, broadcasting</text>
       </g>
 
-      <g transform="translate(0 110)">
+      <g transform="translate(0 96)">
         <circle cx="20" cy="24" r="14" fill="#35C9C5"/>
         <text class="h2" x="56" y="2" dominant-baseline="hanging">Autograd</text>
         <text class="body" x="56" y="52" dominant-baseline="hanging"><tspan class="mono">requires_grad</tspan>, <tspan class="mono">backward()</tspan>, gradients</text>
       </g>
 
-      <g transform="translate(0 220)">
+      <g transform="translate(0 192)">
         <circle cx="20" cy="24" r="14" fill="#2563EB"/>
         <text class="h2" x="56" y="2" dominant-baseline="hanging">nn.Module</text>
         <text class="body" x="56" y="52" dominant-baseline="hanging">Model definition and parameter management</text>
       </g>
 
-      <g transform="translate(0 330)">
+      <g transform="translate(0 288)">
         <circle cx="20" cy="24" r="14" fill="#F59E0B"/>
         <text class="h2" x="56" y="2" dominant-baseline="hanging">Training loop</text>
         <text class="body" x="56" y="52" dominant-baseline="hanging">Forward, loss, backward, optimizer step</text>
       </g>
 
-      <g transform="translate(0 440)">
+      <g transform="translate(0 384)">
         <circle cx="20" cy="24" r="14" fill="#10B981"/>
         <text class="h2" x="56" y="2" dominant-baseline="hanging">Best practices</text>
         <text class="body" x="56" y="52" dominant-baseline="hanging">Reproducibility, no-grad, eval mode, saving</text>
