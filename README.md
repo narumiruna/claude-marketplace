@@ -27,7 +27,7 @@ Standard discovery exposes active skills only; deprecated skills live outside `s
 ## 🧭 How To Use In Codex
 
 - Run `/skills` to inspect the installed collection.
-- Type `$managing-python-with-uv`, `$applying-imrad`, or another skill name to invoke one explicitly.
+- Type `$manage-python-with-uv`, `$apply-imrad`, or another skill name to invoke one explicitly.
 - Describe the task normally and let Codex choose a matching skill.
 
 If Codex does not pick up a local skill change, restart Codex and try again.
@@ -38,31 +38,31 @@ All active skills live directly under `skills/<skill-name>/`.
 
 | Skill | Use it for |
 | --- | --- |
-| `applying-imrad` | Evidence-traceable IMRaD fit checks, reviews, transformations, and drafts. |
-| `applying-tdd` | Scoping red-green-refactor with explicit production-path, test-data, and observable-behavior boundaries. |
-| `auditing-code-security` | Evidence-led, security-first, read-only code audits with verified findings and bounded tool use. |
-| `authoring-marp-slides` | Focused Marp/Marpit authoring, templates, themes, and rendered checks. |
-| `creating-agent-skills` | Creating, naming, reviewing, revising, and explicitly scoring lean, discoverable agent skills. |
-| `creating-mermaid-diagrams` | Editable Mermaid diagrams with optional consumer-ready SVG rendering. |
-| `creating-slide-decks` | Complete Marp decks with coordinated narrative, colors, visuals, and rendering. |
-| `creating-svg-illustrations` | Accessible, portable SVG diagrams and illustrations for target artifacts. |
-| `creating-telegraph-pages` | Preparing and publishing one explicitly authorized Telegra.ph article. |
-| `designing-slide-colors` | Semantic slide palettes with usage rules and measured contrast evidence. |
-| `designing-user-experiences` | Design, review, or implement bounded interfaces and approval-gated end-to-end digital experiences. |
-| `explaining-step-by-step` | Progressive, evidence-grounded mental models for complex material. |
-| `grilling-designs` | Evidence-informed, one-decision-at-a-time design grilling. |
-| `grounding-with-google-genai` | Grounded Google Search, Maps, and specific-URL research with Gemini. |
-| `hardening-code-paths` | Confirming and fixing code-path failure modes or verified security findings. |
-| `improving-codebase-architecture` | Evidence-led codebase architecture assessment and behavior-preserving refactoring. |
-| `managing-python-with-uv` | uv projects, scripts, dependencies, checks, builds, and authorized publishing. |
-| `operating-ghostty` | Inspecting, launching, configuring, validating, and troubleshooting Ghostty. |
-| `prompting-gpt` | Creating, revising, and reviewing prompts using references for the user-specified or detected runtime model, or general principles when unknown or not covered. |
-| `reviewing-code` | Evidence-led ordinary code review with baseline security checks and authorized hardening handoff. |
-| `using-jira-cli` | Read-only Jira inspection and precisely authorized CLI mutations. |
-| `writing-agents-md` | Creating, reviewing, and automatically maintaining lean, evidence-backed `AGENTS.md` guidance at the narrowest applicable scope. |
-| `writing-git-commits` | Drafting, validating, or creating focused Conventional Commits from diffs. |
-| `writing-plans` | Drafting, executing, and tracking lean implementation plans with acceptance evidence, then deleting them when complete. |
-| `writing-roadmap` | Creating, revising, reviewing, and tracking evidence-grounded strategic roadmaps, then deleting them when complete. |
+| `apply-imrad` | Evidence-traceable IMRaD fit checks, reviews, transformations, and drafts. |
+| `apply-tdd` | Scoping red-green-refactor with explicit production-path, test-data, and observable-behavior boundaries. |
+| `audit-code-security` | Evidence-led, security-first, read-only code audits with verified findings and bounded tool use. |
+| `author-marp-slides` | Focused Marp/Marpit authoring, templates, themes, and rendered checks. |
+| `create-agent-skills` | Creating, naming, reviewing, revising, and explicitly scoring lean, discoverable agent skills. |
+| `create-mermaid-diagrams` | Editable Mermaid diagrams with optional consumer-ready SVG rendering. |
+| `create-slide-decks` | Complete Marp decks with coordinated narrative, colors, visuals, and rendering. |
+| `create-svg-illustrations` | Accessible, portable SVG diagrams and illustrations for target artifacts. |
+| `create-telegraph-pages` | Preparing and publishing one explicitly authorized Telegra.ph article. |
+| `design-slide-colors` | Semantic slide palettes with usage rules and measured contrast evidence. |
+| `design-user-experiences` | Design, review, or implement bounded interfaces and approval-gated end-to-end digital experiences. |
+| `explain-step-by-step` | Progressive, evidence-grounded mental models for complex material. |
+| `grill-designs` | Evidence-informed, one-decision-at-a-time design grilling. |
+| `ground-with-google-genai` | Grounded Google Search, Maps, and specific-URL research with Gemini. |
+| `harden-code-paths` | Confirming and fixing code-path failure modes or verified security findings. |
+| `improve-codebase-architecture` | Evidence-led codebase architecture assessment and behavior-preserving refactoring. |
+| `manage-python-with-uv` | uv projects, scripts, dependencies, checks, builds, and authorized publishing. |
+| `operate-ghostty` | Inspecting, launching, configuring, validating, and troubleshooting Ghostty. |
+| `prompt-gpt` | Creating, revising, and reviewing prompts using references for the user-specified or detected runtime model, or general principles when unknown or not covered. |
+| `review-code` | Evidence-led ordinary code review with baseline security checks and authorized hardening handoff. |
+| `use-jira-cli` | Read-only Jira inspection and precisely authorized CLI mutations. |
+| `write-agents-md` | Creating, reviewing, and automatically maintaining lean, evidence-backed `AGENTS.md` guidance at the narrowest applicable scope. |
+| `write-git-commits` | Drafting, validating, or creating focused Conventional Commits from diffs. |
+| `write-plans` | Drafting, executing, and tracking lean implementation plans with acceptance evidence, then deleting them when complete. |
+| `write-roadmap` | Creating, revising, reviewing, and tracking evidence-grounded strategic roadmaps, then deleting them when complete. |
 
 ## 🗄️ Deprecated Skills
 
@@ -74,9 +74,9 @@ Deprecated skills remain in `deprecated/<skill-name>/` for reference and are exc
 | `cleaning-atuin-history` | Legacy Atuin audit and exact-approval cleanup preparation. |
 | `building-codex-hooks` | Version-sensitive legacy Codex CLI hook reference. |
 | `writing-work-logs` | Legacy explicit-only Git-evidence work logs. |
-| `naming-agent-skills` | Merged into `creating-agent-skills`; retained as a compatibility reference. |
-| `scoring-agent-skills` | Merged into `creating-agent-skills`; retained as a compatibility reference. |
-| `designing-user-interfaces` | Merged into `designing-user-experiences`; retained as a compatibility reference. |
+| `naming-agent-skills` | Merged into `create-agent-skills`; retained as a compatibility reference. |
+| `scoring-agent-skills` | Merged into `create-agent-skills`; retained as a compatibility reference. |
+| `designing-user-interfaces` | Merged into `design-user-experiences`; retained as a compatibility reference. |
 | `researching-gourmet-venues` | Rarely used city dining workflow retained as a compatibility reference. |
 | `syncing-main-branch` | Legacy explicit-only main-branch synchronization workflow. |
 | `iterating-ui-improvements` | Legacy explicit-only DevTools audit-fix-commit loop. |

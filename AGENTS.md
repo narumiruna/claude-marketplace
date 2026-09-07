@@ -9,7 +9,7 @@ Follow global defaults; this file contains only repository-specific additions an
 - Explain the main idea simply before adding necessary detail.
 - Keep information accurate.
 - Make documented rules specific and verifiable.
-- Follow the model-selection policy in `./skills/prompting-gpt/SKILL.md` when creating, revising, or reviewing skills and other agent-facing prompts.
+- Follow the model-selection policy in `./skills/prompt-gpt/SKILL.md` when creating, revising, or reviewing skills and other agent-facing prompts.
 - Keep external positioning, installation flows, and skill discovery in `README.md`, and keep maintainer workflow in this file.
 - Update the README catalog when a skill is added, deprecated, renamed, recategorized, or materially changes its trigger.
 - Update installation documentation and executable recipes only in the files that own the affected flow.
@@ -20,7 +20,7 @@ Follow global defaults; this file contains only repository-specific additions an
 - Prefer simple, minimal solutions over unnecessary complexity.
 - Use lowercase kebab-case for skill directories and name every required entry file exactly `SKILL.md`.
 - Preserve a skill's original user intent when naming or renaming it; do not force `<verb-ing>-<object>` when that changes the meaning.
-- Retain explicit-invocation skills that provide useful mode shortcuts even when their behavior can be inferred; keep `explaining-step-by-step` active.
+- Retain explicit-invocation skills that provide useful mode shortcuts even when their behavior can be inferred; keep `explain-step-by-step` active.
 - Keep a skill's frontmatter description and README catalog entry aligned when its trigger or purpose changes.
 - Keep examples repository-relative and executable when practical.
 - For user interfaces, apply Apple-derived design philosophy across platforms while translating platform-specific metrics and controls to target conventions; minimize cognitive load without sacrificing functional completeness, keep critical actions and state visible, and use predictable progressive disclosure for secondary complexity.
