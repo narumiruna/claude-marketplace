@@ -42,6 +42,7 @@ All active skills live directly under `skills/<skill-name>/`.
 | `apply-tdd` | Scoping red-green-refactor with explicit production-path, test-data, and observable-behavior boundaries. |
 | `audit-code-security` | Evidence-led, security-first, read-only code audits with verified findings and bounded tool use. |
 | `author-marp-slides` | Focused Marp/Marpit authoring, templates, themes, and rendered checks. |
+| `calibrate-writing-style` | Explicit-invocation interviews that refine reusable English and Taiwan Traditional Chinese writing-style prompts. |
 | `create-agent-skills` | Creating, naming, reviewing, revising, and explicitly scoring lean, discoverable agent skills. |
 | `create-mermaid-diagrams` | Editable Mermaid diagrams with optional consumer-ready SVG rendering. |
 | `create-slide-decks` | Complete Marp decks with coordinated narrative, colors, visuals, and rendering. |
